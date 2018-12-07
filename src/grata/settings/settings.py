@@ -78,5 +78,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # LOGIN_REDIRECT_URL = 'show_student'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,"static"),
+    os.path.join(BASE_DIR,"src/static"),
 )
