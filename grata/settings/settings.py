@@ -1,7 +1,7 @@
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SECRET_KEY = 'z4+fp@)hn7p2qmzhqaod#)adooz#30o*mp15a+ev7g45n2kk_r'
+SECRET_KEY = 'fy@6&@#4rbvekj2b82nir2434k%%lw9glrro)d)@fslg0lc2vz'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
@@ -12,6 +12,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grata',
 ]
 
 MIDDLEWARE = [
@@ -46,8 +47,11 @@ WSGI_APPLICATION = 'grata.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -67,16 +71,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 STATIC_URL = '/static/'
-# LOGIN_REDIRECT_URL = 'show_student'
+#LOGIN_REDIRECT_URL = 'show_student'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,"src/static"),
+    os.path.join(BASE_DIR,"static"),
 )
