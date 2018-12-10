@@ -10,6 +10,9 @@ __pycache__/
 .Python
 build/
 .idea/
+db.sqlite3
+Procfile
+runtime.txt
 virtualenv/
 develop-eggs/
 dist/
