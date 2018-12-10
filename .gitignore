@@ -11,8 +11,7 @@ __pycache__/
 build/
 .idea/
 db.sqlite3
-Procfile
-runtime.txt
+requirements-dev.txt
 virtualenv/
 develop-eggs/
 dist/
