@@ -17,6 +17,8 @@ develop-eggs/
 dist/
 downloads/
 eggs/
+.sqlite3
+*pyc
 .eggs/
 lib/
 lib64/
