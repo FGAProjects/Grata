@@ -1,8 +1,6 @@
 version: '3'
 
 services:
-  db:
-    image: postgres
   projeto_grata_web:
     build: .
     command: bash -c "python manage.py makemigrations &&
@@ -10,7 +8,6 @@ services:
       python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
+      - .:/db.sqlite3
     ports:
       - "8000:8000"
-    depends_on:
-      - db

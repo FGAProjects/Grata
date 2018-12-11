@@ -1,9 +1,12 @@
 import os
 
+from decouple import config
+from dj_database_url import parse as dburl
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SECRET_KEY = 'fy@6&@#4rbvekj2b82nir2434k%%lw9glrro)d)@fslg0lc2vz'
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = ['https://projeto-grata.herokuapp.com/','*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,14 +48,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
-    }
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -77,7 +76,10 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #LOGIN_REDIRECT_URL = 'show_student'
+"""
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static"),
 )
+"""
