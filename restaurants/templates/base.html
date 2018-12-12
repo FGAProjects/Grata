@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block head_title %}
+            Projeto Grata
+        {% endblock head_title %}
+    </title>
+</head>
+<body>
+
+    {% include 'restaurants/nav.html' %}
+
+    <div class="container">
+        {% block content %}
+            <h1>Home</h1>
+        {% endblock content %}
+    </div>
+
+</body>
+</html>
