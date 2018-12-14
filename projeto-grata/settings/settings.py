@@ -16,7 +16,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'projeto-grata',
-    'restaurants',
     'clients',
 ]
 
@@ -78,10 +77,10 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#LOGIN_REDIRECT_URL = 'show_student'
-"""
+STATIC_DIRS = 'static'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static"),
 )
-"""
+
+#LOGIN_REDIRECT_URL = 'show_student'
+
