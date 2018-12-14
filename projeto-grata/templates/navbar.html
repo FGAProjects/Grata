@@ -1,3 +1,23 @@
+{% load staticfiles %}
+
 {% block content %}
-    <h1>NAVBAR</h1>
+
+    <!--AQUI VAI FICAR A LOGO-->
+
+<div class="navbar-fixed">
+    <nav class="blue darken-1">
+        <div class="container">
+            <div class="nav-wrapper center">
+                <a href="/" class="logo">
+                    <img src="{% static 'images/unb.png' %}" class="responsive">
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="/"><i class="material-icons left">exit_to_app</i><b>SAIR</b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 {% endblock content %}

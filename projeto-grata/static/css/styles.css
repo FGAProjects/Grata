@@ -1,22 +1,18 @@
-body {
-    font-family: "Arial", Georgia, Serif;
+html {
+
+    font-family: arial;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    font-family: "Arial";
+img {
+
+    display: inline-block;
+    margin-left: 60px;
+    margin-right: auto;
+    border: 3px solid green;
+    width: 13.5%;
 }
 
-.modal-header, h4, .close {
-    background-color: #5cb85c;
-    color:white !important;
-    text-align: center;
-    font-size: 30px;
-}
+li {
 
-.modal-footer {
-    background-color: #f9f9f9;
-}
-
-.navbar-brand {
-    color: #FBF9F9;
+    color: #000000;
 }
