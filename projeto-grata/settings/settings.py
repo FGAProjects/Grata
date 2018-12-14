@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'projeto-grata',
     'restaurants',
-
+    'clients',
 ]
 
 MIDDLEWARE = [
