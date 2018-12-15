@@ -1,14 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.forms import ModelForm
+from django.http import HttpResponseRedirect
 
 from clients.models import Client
-
-class ClientForm(ModelForm):
-
-    class Meta:
-
-        model = Client
-        fields = ['name', 'ramal', 'sector', 'email', 'permission']
+from clients.forms import ClientForm
 
 def client_list(request):
 
@@ -25,17 +19,31 @@ def client_show(request, pk):
 
     return render(request, 'clients/client_detail.html', {'object':client})
 
-def client_new(request):
+def new_clients(request):
 
-    form = ClientForm(request.POST or None)
+    client = ClientForm(request.POST or None)
 
-    if form.is_valid():
+    if client.is_valid():
 
-        form.save()
+        client.save()
 
-        return redirect('client_list')
+        return HttpResponseRedirect('/')
 
-    return render(request, 'clients/client_form.html', {'form':form})
+    else:
+
+        client = ClientForm()
+
+    return render(request, 'clients/new_clients.html', {'client': client})
+
+    # form = ClientForm(request.POST or None)
+    #
+    # if form.is_valid():
+    #
+    #     form.save()
+    #
+    #     return redirect('client_list')
+    #
+    # return render(request, 'clients/client_form.html', {'form':form})
 
 def client_update(request, pk):
 

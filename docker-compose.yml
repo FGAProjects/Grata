@@ -3,7 +3,9 @@ version: '3'
 services:
   projeto_grata_web:
     build: .
-    command: bash -c "python manage.py makemigrations &&
+    command: bash -c "
+      python -u setores_json_main.py
+      python manage.py makemigrations &&
       python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000"
     volumes:
