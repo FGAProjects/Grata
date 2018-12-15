@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="width:520px">
 
     <form method="post" class="form-horizontal" role="form">{% csrf_token %}
 
@@ -12,18 +12,19 @@
             <div class="card-panel">
                 <div class="row">
                 <form class="col s12">
+
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s8">
                             <i class="mdi-communication-email prefix"></i>
                             <i class="small material-icons">account_circle</i>
                             <input id="name" name="name" type="text" class="validate"
-                                   required id="id_name" maxlength="35">
+                                   required id="id_name" minlength="3" maxlength="35">
                             <label for="id_name">NOME</label>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s8">
                             <i class="mdi-communication-email prefix"></i>
                             <i class="small material-icons">email</i>
                             <input id="email" name="email" type="email" class="validate"
@@ -33,7 +34,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s2">
+                        <div class="input-field col s3">
                             <i class="mdi-communication-call prefix"></i>
                             <i class="small material-icons">call</i>
                             <input id="ramal" name="ramal" type="text" class="validate"
@@ -43,21 +44,24 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s10">
                             <i class="mdi-communication-group prefix"></i>
                             <i class="small material-icons">group</i>
-                            <input id="sector" name="sector" type="text" class="validate"
-                                   required id="id_sector" maxlength="42" size="20">
-                            <label for="id_sector">SETOR</label>
+                            <select class="browser-default" name="sector" id="sector" required id="id_sector">
+                                {% for sector in sectors %}
+                                    <option name="sector" value="{{sector}}">{{sector}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s2">
+                        <div class="input-field col s3">
                             <i class="mdi-communication-supervisor account prefix"></i>
                             <i class="small material-icons">supervisor_account</i>
                             <input id="permission" name="permission" type="text" class="validate"
-                                   required id="id_permission" maxlength="11" disabled value="Usuário">
+                                   required id="id_permission" maxlength="11" value="Usuário"
+                                    onkeyup="justUser(this);">
                             <label for="id_permission">PERMISSÃO</label>
                         </div>
                     </div>
@@ -72,10 +76,13 @@
                     <!--</div>-->
 
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s5">
                             <button class="btn cyan waves-effect waves-light right" type="submit">Cadastrar
                                 <i class="mdi-content-send right"></i>
                             </button>
+                        </div>
+                        <div class="input-field col s6">
+                            <a href="/" class="btn orange darken-1 waves-effect waves-light right">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -84,4 +91,5 @@
         </div>
     </form>
 </div>
+
 {% endblock content %}

@@ -10,7 +10,7 @@ class Setores(object):
                          'BRASILIA',
                          'MAGDA']
 
-          with open("jsons/setores.json", "w") as write_file:
+          with open("jsons/sectors.json", "w") as write_file:
                json.dump(sector_list, write_file)
 
 if __name__ == "__main__":

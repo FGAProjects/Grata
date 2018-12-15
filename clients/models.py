@@ -5,7 +5,7 @@ class Client(models.Model):
 
     name = models.CharField(max_length=35)
     ramal = models.CharField(max_length=4)
-    sector = models.CharField(max_length=42)
+    sector = models.CharField(max_length=70)
     email = models.CharField(max_length=25)
     permission = models.CharField(max_length=11)
 

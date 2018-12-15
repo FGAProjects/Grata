@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 
@@ -21,6 +23,10 @@ def client_show(request, pk):
 
 def new_clients(request):
 
+    sectors = open('jsons/sectors.json', 'r')
+    list_sectors = json.load(sectors)
+    sectors.close()
+
     client = ClientForm(request.POST or None)
 
     if client.is_valid():
@@ -33,17 +39,7 @@ def new_clients(request):
 
         client = ClientForm()
 
-    return render(request, 'clients/new_clients.html', {'client': client})
-
-    # form = ClientForm(request.POST or None)
-    #
-    # if form.is_valid():
-    #
-    #     form.save()
-    #
-    #     return redirect('client_list')
-    #
-    # return render(request, 'clients/client_form.html', {'form':form})
+    return render(request, 'clients/new_clients.html', {'client': client,'sectors':list_sectors})
 
 def client_update(request, pk):
 

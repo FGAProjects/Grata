@@ -9,3 +9,17 @@ function justNumbers(num) {
           field.value = "";
     }
 }
+
+function justUser(word) {
+
+    if(word.value != "Usuário") {
+
+        word.value = "Usuário";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+});
