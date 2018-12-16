@@ -26,6 +26,7 @@ parts/
 sdist/
 var/
 */migrations/*_initial.py
+*/migrations/*_auto_*.py
 wheels/
 *.egg-info/
 .installed.cfg

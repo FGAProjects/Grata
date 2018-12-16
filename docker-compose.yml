@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  projeto_grata_web:
+  grata_web:
     build: .
     command: bash -c "
-      python -u sectors_json_main.py &&
+      python -u jsons/sectors_json_main.py &&
       python manage.py makemigrations &&
       python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000"

@@ -1,5 +1,7 @@
 import json
 
+from jsons.sectors_json_main import Setores
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 
@@ -19,14 +21,11 @@ def client_show(request, pk):
 
     client = get_object_or_404(Client, pk=pk)
 
-    return render(request, 'clients/client_detail.html', {'object':client})
+    return render(request, 'clients/show_client.html', {'client':client})
 
 def new_clients(request):
 
-    sectors = open('jsons/sectors.json', 'r')
-    list_sectors = json.load(sectors)
-    sectors.close()
-
+    list_sectors = Setores.list_sectors()
     client = ClientForm(request.POST or None)
 
     if client.is_valid():
@@ -44,16 +43,21 @@ def new_clients(request):
 def client_update(request, pk):
 
     client = get_object_or_404(Client, pk=pk)
-
+    list_sectors = Setores.list_sectors()
     form = ClientForm(request.POST or None, instance=client)
 
     if form.is_valid():
 
-        form.save()
+        client = form.save(commit=False)
+        client.save()
 
-        return redirect('client_list')
+        return redirect('client_show',pk=client.pk)
 
-    return render(request, 'clients/client_form.html', {'form':form})
+    else:
+
+        form = ClientForm(instance=client)
+
+    return render(request, 'clients/edit_clients.html', {'client':client,'sectors':list_sectors})
 
 def client_delete(request, pk):
 
@@ -65,4 +69,4 @@ def client_delete(request, pk):
 
         return redirect('client_list')
 
-    return render(request, 'clients/client_confirm_delete.html', {'object':client})
+    return render(request, 'clients/client_confirm_delete.html', {'client':client})

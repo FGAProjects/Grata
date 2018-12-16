@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1>Client Details</h1>
+<h2>Name: {{client.name}}</h2>
+Ramal: {{ client.ramal }}
+{{client.permission}}
+{{client.sector}}
+
+{% endblock content %}
