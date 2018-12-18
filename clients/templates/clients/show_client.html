@@ -4,9 +4,10 @@
 {% block content %}
 
 <h1>Client Details</h1>
-<h2>Name: {{user.username}}</h2>
-<h2>Ramal: {{ user.client.ramal }}</h2>
-<h2>Setor:{{user.client.sector}}</h2>
+<h2>Name: {{user.first_name}}</h2>
+<h2>Email: {{user.username}}</h2>
+<h2>Ramal: {{ user.last_name}}</h2>
+<h2>Setor:{{user.email}}</h2>
 
 <a href="{% url 'logout' %}">Logout</a>
 

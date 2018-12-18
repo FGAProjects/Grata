@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from clients.forms import ClientSignUp
+from django.contrib.auth.decorators import login_required
 from clients.models import Client
 from jsons.sectors_json_main import Setores
 from django.shortcuts import get_object_or_404
@@ -23,7 +24,8 @@ def new_client(request):
             user.first_name = form.cleaned_data.get('username')
 
             user.username = user.client.email
-            user.email = user.username
+            user.email = user.client.sector
+            user.last_name = user.client.ramal
             user.save()
 
             return redirect('/')
@@ -37,12 +39,10 @@ def new_client(request):
 
     return render(request, 'clients/new_clients.html', {'form': form, 'sectors': list_sectors})
 
+@login_required
 def client_show(request):
-    return render(request, 'clients/show_client.html')
-    # clients = get_object_or_404(Client, pk=pk)
-    #
-    # return render(request, 'clients/show_client.html', {'clients':clients})
 
+    return render(request, 'clients/show_client.html')
 #
 # def client_list(request):
 #
