@@ -5,16 +5,8 @@ class Setores(object):
 
     def convert_list_json(self):
 
-        sector_list = ['Secretária de Transparência',
-                        'Secretária de Finanças, Orçamento e Contabilidade',
-                        'Secretária de Patrimônio',
-                        'Secretária de Administração de Contratações',
-                        'Secretária de Gestão de Pessoas',
-                        'Secretária de Infraestrutura',
-                        'Secretária de Gestão de Informação e Documentação',
+        sector_list = [ 'Secretária de Gestão de Informação e Documentação',
                         'Secretária de Tecnologia da Informação PRODASEN',
-                        'Secretária de Editoração e Publicações',
-                        'Secretária de Polícia Legislativa',
                         'Secretária de Apoio a Orgãos do Parlamento',
                         'Secretária de Atas e Diários',
                         'Secretária de Comissões',

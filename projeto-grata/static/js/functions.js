@@ -10,14 +10,6 @@ function justNumbers(num) {
     }
 }
 
-function justUser(word) {
-
-    if(word.value != "Usuário") {
-
-        word.value = "Usuário";
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
 
     var elems = document.querySelectorAll('select');

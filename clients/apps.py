@@ -1,5 +1,4 @@
 from django.apps import AppConfig
 
-
-class PeopleConfig(AppConfig):
+class ClientConfig(AppConfig):
     name = 'clients'

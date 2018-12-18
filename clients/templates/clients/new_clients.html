@@ -17,9 +17,9 @@
                         <div class="input-field col s8">
                             <i class="mdi-communication-email prefix"></i>
                             <i class="small material-icons">account_circle</i>
-                            <input id="name" name="name" type="text" class="validate"
-                                   required id="id_name" minlength="3" maxlength="35">
-                            <label for="id_name">NOME</label>
+                            <input name="username" type="text" class="validate"
+                                   required id="id_username" minlength="3" maxlength="35">
+                            <label for="id_username">NOME</label>
                         </div>
                     </div>
 
@@ -27,7 +27,7 @@
                         <div class="input-field col s8">
                             <i class="mdi-communication-email prefix"></i>
                             <i class="small material-icons">email</i>
-                            <input id="email" name="email" type="email" class="validate"
+                            <input name="email" type="email" class="validate"
                                    required id="id_email" maxlength="25">
                             <label for="id_email">EMAIL</label>
                         </div>
@@ -37,7 +37,7 @@
                         <div class="input-field col s3">
                             <i class="mdi-communication-call prefix"></i>
                             <i class="small material-icons">call</i>
-                            <input id="ramal" name="ramal" type="text" class="validate"
+                            <input name="ramal" type="text" class="validate"
                                    required id="id_ramal" maxlength="4" onkeyup="justNumbers(this);">
                             <label for="id_ramal">RAMAL</label>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="input-field col s10">
                             <i class="mdi-communication-group prefix"></i>
                             <i class="small material-icons">group</i>
-                            <select class="browser-default" name="sector" id="sector" required id="id_sector">
+                            <select class="browser-default" name="sector" required id="id_sector">
                                 {% for sector in sectors %}
                                     <option name="sector" value="{{sector}}">{{sector}}</option>
                                 {% endfor %}
@@ -56,24 +56,23 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s3">
-                            <i class="mdi-communication-supervisor account prefix"></i>
-                            <i class="small material-icons">supervisor_account</i>
-                            <input id="permission" name="permission" type="text" class="validate"
-                                   required id="id_permission" maxlength="11" value="Usuário"
-                                    onkeyup="justUser(this);">
-                            <label for="id_permission">PERMISSÃO</label>
+                        <div class="input-field col s12">
+                            <i class="mdi-action-lock-outline prefix"></i>
+                            <i class="small material-icons">lock</i>
+                            <input name="password1" type="password" class="validate" required id="id_password1">
+                            <label for="id_password1">Senha</label>
                         </div>
                     </div>
-                    <!--O password vai entrar depois-->
-                    <!--<div class="row">-->
-                        <!--<div class="input-field col s12">-->
-                            <!--<i class="mdi-action-lock-outline prefix"></i>-->
-                            <!--<i class="small material-icons">lock</i>-->
-                            <!--<input id="password5" type="password" class="validate" required="True">-->
-                            <!--<label for="password">Password</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="mdi-action-lock-outline prefix"></i>
+                            <i class="small material-icons">lock</i>
+                            <input name="password2" type="password" class="validate" required id="id_password2">
+                            <label for="id_password2">Confirmação da Senha</label>
+                            <small style="color: grey">Repita senha.</small>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="input-field col s5">
