@@ -1,4 +1,5 @@
 function justNumbers(num) {
+
     var er = /[^0-9.]/;
     var field = num;
 
@@ -15,3 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems, options);
 });
+
+$(document).ready(function(){
+
+    $('.modal').modal();
+});
+
+$(".dropdown-trigger").dropdown();

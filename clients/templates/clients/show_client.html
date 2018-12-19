@@ -3,12 +3,13 @@
 
 {% block content %}
 
-<h1>Client Details</h1>
-<h2>Name: {{user.first_name}}</h2>
-<h2>Email: {{user.username}}</h2>
-<h2>Ramal: {{ user.last_name}}</h2>
-<h2>Setor:{{user.email}}</h2>
+<h3>Name: {{user.first_name}}</h3>
+<h3>Email: {{user.username}}</h3>
+<h3>Ramal: {{ user.last_name}}</h3>
+<h3>Setor:{{user.email}}</h3>
 
 <a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'client_edit' %}">Edit</a>
+<a href="{% url 'client_delete' user.id%}">Delete</a>
 
 {% endblock content %}

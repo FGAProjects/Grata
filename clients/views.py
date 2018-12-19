@@ -1,9 +1,10 @@
+from django.views.generic import DeleteView
 from django.shortcuts import render, redirect
-from clients.forms import ClientSignUp
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from clients.models import Client
+
+from clients.forms import ClientSignUp,EditClientForm
 from jsons.sectors_json_main import Setores
-from django.shortcuts import get_object_or_404
 
 def new_client(request):
 
@@ -43,45 +44,43 @@ def new_client(request):
 def client_show(request):
 
     return render(request, 'clients/show_client.html')
-#
-# def client_list(request):
-#
-#     clients = Client.objects.all()
-#
-#     data = {}
-#     data['object_list'] = clients
-#
-#     return render(request, 'profile/client_list.html', data)
-#
 
-#
-# def client_update(request, pk):
-#
-#     clients = get_object_or_404(Client, pk=pk)
-#     list_sectors = Setores.list_sectors()
-#     form = ClientSignUp(request.POST or None, instance=clients)
-#
-#     if form.is_valid():
-#
-#         clients = form.save(commit=False)
-#         clients.save()
-#
-#         return redirect('client_show',pk=clients.pk)
-#
-#     else:
-#
-#         form = ClientSignUp(instance=clients)
-#
-#     return render(request, 'profile/edit_clients.html', {'clients':clients,'sectors':list_sectors})
-#
-# def client_delete(request, pk):
-#
-#     clients = get_object_or_404(Client, pk=pk)
-#
-#     if request.method=='POST':
-#
-#         clients.delete()
-#
-#         return redirect('client_list')
-#
-#     return render(request, 'profile/client_confirm_delete.html', {'clients':clients})
+@login_required
+def client_update(request):
+
+    list_sectors = Setores.list_sectors()
+
+    if request.method == "POST":
+
+        form = EditClientForm(request.POST,instance=request.user)
+
+        if form.is_valid():
+
+            user = form.save()
+            user.username = form.cleaned_data.get('username')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.first_name = form.cleaned_data.get('first_name')
+            user.email = form.cleaned_data.get('sector')
+            user.save()
+
+            return redirect('client_show')
+
+        else:
+
+            print('Form invalid')
+
+    else:
+
+        form = EditClientForm(request.POST,instance=request.user)
+
+    return render(request,'clients/edit_clients.html',{'sectors':list_sectors,'form':form})
+
+
+class ClientDelete(DeleteView):
+
+    model = EditClientForm.Meta.model
+    template_name = "clients/delete_client.html"
+
+    def get_success_url(self):
+
+        return reverse_lazy('logout')

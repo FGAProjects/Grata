@@ -17,9 +17,9 @@
                         <div class="input-field col s8">
                             <i class="mdi-communication-email prefix"></i>
                             <i class="small material-icons">account_circle</i>
-                            <input id="name" name="name" type="text" class="validate"
-                                   required id="id_name" minlength="3" maxlength="35" value="{{client.name}}">
-                            <label for="id_name">NOME</label>
+                            <input name="first_name" type="text" class="validate"
+                                   required id="id_first_name" minlength="3" maxlength="35" value="{{user.first_name}}">
+                            <label for="id_first_name">NOME</label>
                         </div>
                     </div>
 
@@ -27,9 +27,9 @@
                         <div class="input-field col s8">
                             <i class="mdi-communication-email prefix"></i>
                             <i class="small material-icons">email</i>
-                            <input id="email" name="email" type="email" class="validate"
-                                   required id="id_email" maxlength="25" value="{{client.email}}">
-                            <label for="id_email">EMAIL</label>
+                            <input name="username" type="email" class="validate"
+                                   required id="id_username" maxlength="25" value="{{user.username}}">
+                            <label for="id_username">EMAIL</label>
                         </div>
                     </div>
 
@@ -37,10 +37,10 @@
                         <div class="input-field col s3">
                             <i class="mdi-communication-call prefix"></i>
                             <i class="small material-icons">call</i>
-                            <input id="ramal" name="ramal" type="text" class="validate"
-                                   required id="id_ramal" maxlength="4" onkeyup="justNumbers(this);"
-								   value="{{client.ramal}}">
-                            <label for="id_ramal">RAMAL</label>
+                            <input name="last_name" type="text" class="validate"
+                                   required id="id_last_name" maxlength="4" onkeyup="justNumbers(this);"
+								   value="{{user.last_name}}">
+                            <label for="id_last_name">RAMAL</label>
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                         <div class="input-field col s10">
                             <i class="mdi-communication-group prefix"></i>
                             <i class="small material-icons">group</i>
-                            <select class="browser-default" name="sector" id="sector" required id="id_sector">
+                            <select class="browser-default" name="sector" required id="id_sector">
                                 {% for sector in sectors %}
                                     <option name="sector" value="{{sector}}">{{sector}}</option>
                                 {% endfor %}
@@ -57,34 +57,13 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s3">
-                            <i class="mdi-communication-supervisor account prefix"></i>
-                            <i class="small material-icons">supervisor_account</i>
-                            <input id="permission" name="permission" type="text" class="validate"
-                                   required id="id_permission" maxlength="11" value="Usuário"
-                                    onkeyup="justUser(this);"
-									value="{{client.permission}}">
-                            <label for="id_permission">PERMISSÃO</label>
-                        </div>
-                    </div>
-                    <!--O password vai entrar depois-->
-                    <!--<div class="row">-->
-                        <!--<div class="input-field col s12">-->
-                            <!--<i class="mdi-action-lock-outline prefix"></i>-->
-                            <!--<i class="small material-icons">lock</i>-->
-                            <!--<input id="password5" type="password" class="validate" required="True">-->
-                            <!--<label for="password">Password</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <div class="row">
                         <div class="input-field col s5">
-                            <button class="btn cyan waves-effect waves-light right" type="submit">Cadastrar
+                            <button class="btn cyan waves-effect waves-light right" type="submit">Alterar
                                 <i class="mdi-content-send right"></i>
                             </button>
                         </div>
                         <div class="input-field col s6">
-                            <a href="/" class="btn orange darken-1 waves-effect waves-light right">Cancelar</a>
+                            <a href="/perfil" class="btn orange darken-1 waves-effect waves-light right">Cancelar</a>
                         </div>
                     </div>
                 </form>
