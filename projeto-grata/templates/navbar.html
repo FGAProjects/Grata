@@ -6,20 +6,26 @@
     <nav class="blue darken-1">
         <div class="container">
             <div class="nav-wrapper center">
-                <a href="{% url 'client_show' %}" class="logo">
-                    <!--Por enquanto a pagina de perfil do usuário é a pagina base-->
-                    <img src="{% static 'images/franky.gif' %}" class="responsive">
-                </a>
-                <ul class="align right hide-on-med-and-down">
-                    <li>
-                        <a href="{% url 'client_show' %}"><i class="material-icons left">contacts</i><b>CONTA</b></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i><b>SAIR</b></a>
-                    </li>
-                </ul>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'client_show' %}" class="logo">
+                        <!--Por enquanto a pagina de perfil do usuário é a pagina base-->
+                        <img src="{% static 'images/franky.gif' %}" class="responsive">
+                    </a>
+                    <ul class="align right hide-on-med-and-down">
+                        <li>
+                            <a href="{% url 'client_show' %}"><i class="material-icons left">contacts</i><b>CONTA</b></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i><b>SAIR</b></a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <a href="#" class="logo">
+                        <!--Por enquanto a pagina de perfil do usuário é a pagina base-->
+                        <img src="{% static 'images/franky.gif' %}" class="responsive">
+                    </a>
+                {% endif %}
             </div>
-
         </div>
     </nav>
 </div>
