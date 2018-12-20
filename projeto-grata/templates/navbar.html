@@ -2,31 +2,135 @@
 
 {% block content %}
 
-<div class="navbar-fixed">
-    <nav class="blue darken-1">
-        <div class="container">
-            <div class="nav-wrapper center">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'client_show' %}" class="logo">
-                        <!--Por enquanto a pagina de perfil do usuário é a pagina base-->
-                        <img src="{% static 'images/franky.gif' %}" class="responsive">
+<nav class="black darken-1" style="padding:0px 10px;">
+    <div class="nav-wrapper">
+        {% if user.is_authenticated %}
+            <a href="/reunioes" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+
+            <a href="/reunioes" class="sidenav-trigger" data-target="mobile-nav">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            notifications
+                        </i><b>NOTIFICAÇÕES</b>
                     </a>
-                    <ul class="align right hide-on-med-and-down">
-                        <li>
-                            <a href="{% url 'client_show' %}"><i class="material-icons left">contacts</i><b>CONTA</b></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i><b>SAIR</b></a>
-                        </li>
-                    </ul>
-                {% else %}
-                    <a href="#" class="logo">
-                        <!--Por enquanto a pagina de perfil do usuário é a pagina base-->
-                        <img src="{% static 'images/franky.gif' %}" class="responsive">
+                </li>
+
+                <li>
+                    <a href="{% url 'meeting_list' %}">
+                        <i class="material-icons left">
+                            people
+                        </i><b>REUNIÕES</b>
                     </a>
-                {% endif %}
-            </div>
-        </div>
-    </nav>
-</div>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            local_library
+                        </i><b>MÉTODO JAD</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            view_list
+                        </i><b>RELATÓRIOS</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            help_outline
+                        </i><b>AJUDA</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            contacts
+                        </i><b>CONTA</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i><b>SAIR</b></a>
+                </li>
+            </ul>
+
+            <ul class="sidenav" id="mobile-nav">
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            notifications
+                        </i><b>NOTIFICAÇÕES</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'meeting_list' %}">
+                        <i class="material-icons left">
+                            people
+                        </i><b>REUNIÕES</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            local_library
+                        </i><b>MÉTODO JAD</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            view_list
+                        </i><b>RELATÓRIOS</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            help_outline
+                        </i><b>AJUDA</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            contacts
+                        </i><b>CONTA</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="material-icons left">
+                            exit_to_app
+                        </i><b>SAIR</b>
+                    </a>
+                </li>
+            </ul>
+        {% else %}
+            <a href="/" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
+        {% endif %}
+    </div>
+</nav>
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
+</script>
 {% endblock content %}

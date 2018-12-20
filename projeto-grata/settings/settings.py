@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'projeto-grata',
     'clients',
+    'meetings',
 ]
 
 MIDDLEWARE = [
@@ -83,4 +84,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,"static"),
 )
 
-LOGIN_REDIRECT_URL = 'client_show'
+LOGIN_REDIRECT_URL = 'meeting_list'

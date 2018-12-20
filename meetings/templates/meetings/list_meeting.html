@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+    	<div class="col s12">
+      		<div class="row">
+        		<div class="input-field col s12">
+          			<i class="material-icons prefix">search</i>
+          			<input type="text" id="demo-auto" class="autocomplete">
+          			<label for="demo-auto">Pesquise um relatório</label>
+        		</div>
+      		</div>
+    	</div>
+  	</div>
+</div>
+
+<table class="centered responsive-table">
+
+ 	<thead>
+		<tr>
+			<th>
+				<a  href="#" class="waves-effect green darken-2 btn">
+					<i class="material-icons center">
+						add
+					</i>
+					Reunião
+				</a>
+			</th>
+			<th>Número</th>
+			<th>Assunto</th>
+		  	<th>Projeto</th>
+		  	<th>Status</th>
+	  	</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<th></th>
+			<td>1</td>
+            <td>Assunto Teste</td>
+            <td>Projeto Teste</td>
+			<td>Status Teste</td>
+	  	</tr>
+	</tbody>
+</table>
+
+<script>
+  $(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "jQuery": null,
+        "JavaScriptextsmstextsmstextsmstextsmstextsmstextsmstextsmst": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+        "CSS": null,
+        "HTML": null,
+        "Bootstrap": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+        "Java": null,
+        "Python": null,
+      },
+    });
+  });
+</script>
+{% endblock content %}
