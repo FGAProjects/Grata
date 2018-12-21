@@ -22,7 +22,7 @@
  	<thead>
 		<tr>
 			<th>
-				<a  href="#" class="waves-effect green darken-2 btn">
+				<a  href="{% url 'meeting_new' %}" class="waves-effect green darken-2 btn">
 					<i class="material-icons center">
 						add
 					</i>
@@ -45,6 +45,28 @@
 			<td>Status Teste</td>
 	  	</tr>
 	</tbody>
+</table>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for meeting in list_meeting %}
+    <tr>
+    <td>{{ meeting.project }}</td>
+    <!--<td>{{ meeting.pages }}</td>-->
+    <td><a href="{% url 'meeting_view' meeting.id %}">view</a></td>
+    <td><a href="{% url 'meeting_edit' meeting.id %}">edit</a></td>
+
+    </tr>
+    {% endfor %}
+</tbody>
 </table>
 
 <script>

@@ -11,81 +11,81 @@
         <div class="col s12 m12 l6">
             <div class="card-panel">
                 <div class="row">
-                <form class="col s12">
+                    <form class="col s12">
 
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <i class="mdi-communication-email prefix"></i>
-                            <i class="small material-icons">account_circle</i>
-                            <input name="username" type="text" class="validate"
-                                   required id="id_username" minlength="3" maxlength="35">
-                            <label for="id_username">NOME</label>
+                        <div class="row">
+                            <div class="input-field col s8">
+                                <i class="mdi-communication-email prefix"></i>
+                                <i class="small material-icons">account_circle</i>
+                                <input name="username" type="text" class="validate"
+                                       required id="id_username" minlength="3" maxlength="35">
+                                <label for="id_username">NOME</label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="input-field col s8">
-                            <i class="mdi-communication-email prefix"></i>
-                            <i class="small material-icons">email</i>
-                            <input name="email" type="email" class="validate"
-                                   required id="id_email" maxlength="25">
-                            <label for="id_email">EMAIL</label>
+                        <div class="row">
+                            <div class="input-field col s8">
+                                <i class="mdi-communication-email prefix"></i>
+                                <i class="small material-icons">email</i>
+                                <input name="email" type="email" class="validate"
+                                       required id="id_email" maxlength="25">
+                                <label for="id_email">EMAIL</label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="input-field col s3">
-                            <i class="mdi-communication-call prefix"></i>
-                            <i class="small material-icons">call</i>
-                            <input name="ramal" type="text" class="validate"
-                                   required id="id_ramal" maxlength="4" onkeyup="justNumbers(this);">
-                            <label for="id_ramal">RAMAL</label>
+                        <div class="row">
+                            <div class="input-field col s3">
+                                <i class="mdi-communication-call prefix"></i>
+                                <i class="small material-icons">call</i>
+                                <input name="ramal" type="text" class="validate"
+                                       required id="id_ramal" maxlength="4" onkeyup="justNumbers(this);">
+                                <label for="id_ramal">RAMAL</label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="input-field col s10">
-                            <i class="mdi-communication-group prefix"></i>
-                            <i class="small material-icons">group</i>
-                            <select class="browser-default" name="sector" required id="id_sector">
-                                {% for sector in sectors %}
-                                    <option name="sector" value="{{sector}}">{{sector}}</option>
-                                {% endfor %}
-                            </select>
+                        <div class="row">
+                            <div class="input-field col s10">
+                                <i class="mdi-communication-group prefix"></i>
+                                <i class="small material-icons">group</i>
+                                <select class="browser-default" name="sector" required id="id_sector">
+                                    {% for sector in sectors %}
+                                        <option name="sector" value="{{sector}}">{{sector}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="mdi-action-lock-outline prefix"></i>
-                            <i class="small material-icons">lock</i>
-                            <input name="password1" type="password" class="validate" required id="id_password1">
-                            <label for="id_password1">Senha</label>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-lock-outline prefix"></i>
+                                <i class="small material-icons">lock</i>
+                                <input name="password1" type="password" class="validate" required id="id_password1">
+                                <label for="id_password1">Senha</label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="mdi-action-lock-outline prefix"></i>
-                            <i class="small material-icons">lock</i>
-                            <input name="password2" type="password" class="validate" required id="id_password2">
-                            <label for="id_password2">Confirmação da Senha</label>
-                            <small style="color: grey">Repita senha.</small>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="mdi-action-lock-outline prefix"></i>
+                                <i class="small material-icons">lock</i>
+                                <input name="password2" type="password" class="validate" required id="id_password2">
+                                <label for="id_password2">Confirmação da Senha</label>
+                                <small style="color: grey">Repita senha.</small>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="input-field col s5">
-                            <button class="btn cyan waves-effect waves-light right" type="submit">Cadastrar
-                                <i class="mdi-content-send right"></i>
-                            </button>
+                        <div class="row">
+                            <div class="input-field col s5">
+                                <button class="btn cyan waves-effect waves-light right" type="submit">Cadastrar
+                                    <i class="mdi-content-send right"></i>
+                                </button>
+                            </div>
+                            <div class="input-field col s6">
+                                <a href="/" class="btn orange darken-1 waves-effect waves-light right">Cancelar</a>
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <a href="/" class="btn orange darken-1 waves-effect waves-light right">Cancelar</a>
-                        </div>
-                    </div>
-                </form>
-              </div>
+                    </form>
+                </div>
             </div>
         </div>
     </form>

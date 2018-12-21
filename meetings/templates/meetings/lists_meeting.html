@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1>Books</h1>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Pages</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for meeting in meeting_list %}
+    <tr>
+		<td>{{ meeting.project }}</td>
+
+	</tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<a href="{% url 'meeting_new' %}">New</a>
+
+{% endblock content %}

@@ -75,7 +75,6 @@ def client_update(request):
 
     return render(request,'clients/edit_clients.html',{'sectors':list_sectors,'form':form})
 
-
 class ClientDelete(DeleteView):
 
     model = EditClientForm.Meta.model
