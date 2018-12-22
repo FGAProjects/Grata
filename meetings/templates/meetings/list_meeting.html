@@ -41,7 +41,7 @@
     		<tr>
 				<td></td>
 				<td>{{ meeting.id }}</td>
-				<td>{{ meeting.subject_matter }}</td>
+				<td><a href="{% url 'meeting_view' meeting.id%}">{{meeting.subject_matter}}</a></td>
 				<td>{{ meeting.project }}</td>
 			</tr>
     {% endfor %}
