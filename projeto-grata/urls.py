@@ -26,8 +26,7 @@ urlpatterns = [
     path('detalhes_reuniao/<int:pk>', meeting_views.show_meeting, name='meeting_view'),
     path('nova_reuniao/', meeting_views.new_meeting, name='meeting_new'),
     path('editar_reuniao/<int:pk>', meeting_views.edit_meeting, name='meeting_edit'),
-    # path('delete/<int:pk>', meeting_views.MeetingDelete.as_view(), name='meeting_delete'),
-    # path('reuniao/', meeting_views.meeting_show, name='meeting_show'),
+    path('delete/<int:pk>', meeting_views.delete_meeting, name='meeting_delete'),
 ]
 
 

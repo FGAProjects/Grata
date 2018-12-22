@@ -59,11 +59,10 @@
 <tbody>
     {% for meeting in list_meeting %}
     <tr>
-    <td>{{ meeting.project }}</td>
-    <!--<td>{{ meeting.pages }}</td>-->
-    <td><a href="{% url 'meeting_view' meeting.id %}">view</a></td>
-    <td><a href="{% url 'meeting_edit' meeting.id %}">edit</a></td>
-
+		<td>{{ meeting.project }}</td>
+		<td><a href="{% url 'meeting_view' meeting.id %}">Amostra</a></td>
+		<td><a href="{% url 'meeting_edit' meeting.id %}">Edição</a></td>
+		<td><a href="{% url 'meeting_delete' meeting.id %}">Delete</a></td>
     </tr>
     {% endfor %}
 </tbody>
