@@ -45,14 +45,15 @@
                         </div>
 
                         <div class="row">
-                            <div class="input-field col s10">
+                            <div class="input-field col s11">
                                 <i class="mdi-communication-group prefix"></i>
                                 <i class="small material-icons">group</i>
-                                <select class="browser-default" name="sector" required id="id_sector">
+                                <select name="sector" required id="id_sector">
                                     {% for sector in sectors %}
-                                        <option name="sector" value="{{sector}}">{{sector}}</option>
+                                        <option value="{{sector}}">{{sector}}</option>
                                     {% endfor %}
                                 </select>
+                                <label>SETOR</label>
                             </div>
                         </div>
 
@@ -72,5 +73,12 @@
         </div>
     </form>
 </div>
+
+<script>
+
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+</script>
 
 {% endblock content %}

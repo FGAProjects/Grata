@@ -2,6 +2,7 @@ from django.views.generic import DeleteView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from clients.forms import ClientSignUp,EditClientForm
 from jsons.sectors_json_main import Setores
@@ -74,6 +75,29 @@ def client_update(request):
         form = EditClientForm(request.POST,instance=request.user)
 
     return render(request,'clients/edit_clients.html',{'sectors':list_sectors,'form':form})
+
+@login_required
+def client_delete(request):
+
+    client = User.objects.get(id=request.user.id)
+
+    if request.method == 'POST':
+
+        client.delete()
+        return redirect('logout')
+
+    return render(request, 'clients/delete_client.html', {'client': client})
+
+
+@login_required
+def list_users(request):
+
+    client = User.objects.all()
+
+    """
+        Aqui vai pegar todos os usuários para adicionar a reunião
+    """
+    pass
 
 class ClientDelete(DeleteView):
 

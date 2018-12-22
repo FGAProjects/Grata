@@ -19,7 +19,7 @@ urlpatterns = [
     path('perfil/', client_views.client_show, name='client_show'),
     path('novo_usuario', client_views.new_client, name='client_new'),
     path('editar_perfil/', client_views.client_update, name='client_edit'),
-    url(r'^excluir_perfil/(?P<pk>\d+)$', client_views.ClientDelete.as_view(), name='client_delete'),
+    path('excluir_perfil/', client_views.client_delete, name='client_delete'),
 
     #Meetings
     path('reunioes/', meeting_views.list_meeting, name='meeting_list'),

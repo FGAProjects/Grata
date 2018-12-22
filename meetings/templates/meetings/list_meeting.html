@@ -37,35 +37,15 @@
 	</thead>
 
 	<tbody>
-		<tr>
-			<th></th>
-			<td>1</td>
-            <td>Assunto Teste</td>
-            <td>Projeto Teste</td>
-			<td>Status Teste</td>
-	  	</tr>
-	</tbody>
-</table>
-
-<table border="1">
-<thead>
-    <tr>
-    <th>Name</th>
-    <th>View</th>
-    <th>Edit</th>
-    <th>Delete</th>
-    </tr>
-</thead>
-<tbody>
-    {% for meeting in list_meeting %}
-    <tr>
-		<td>{{ meeting.project }}</td>
-		<td><a href="{% url 'meeting_view' meeting.id %}">Amostra</a></td>
-		<td><a href="{% url 'meeting_edit' meeting.id %}">Edição</a></td>
-		<td><a href="{% url 'meeting_delete' meeting.id %}">Delete</a></td>
-    </tr>
+		{% for meeting in list_meeting %}
+    		<tr>
+				<td></td>
+				<td>{{ meeting.id }}</td>
+				<td>{{ meeting.subject_matter }}</td>
+				<td>{{ meeting.project }}</td>
+			</tr>
     {% endfor %}
-</tbody>
+	</tbody>
 </table>
 
 <script>

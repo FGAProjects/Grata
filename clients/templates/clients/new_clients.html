@@ -44,14 +44,15 @@
                         </div>
 
                         <div class="row">
-                            <div class="input-field col s10">
+                            <div class="input-field col s11">
                                 <i class="mdi-communication-group prefix"></i>
                                 <i class="small material-icons">group</i>
-                                <select class="browser-default" name="sector" required id="id_sector">
+                                <select name="sector" required id="id_sector">
                                     {% for sector in sectors %}
-                                        <option name="sector" value="{{sector}}">{{sector}}</option>
+                                        <option value="{{sector}}">{{sector}}</option>
                                     {% endfor %}
                                 </select>
+                                <label>SETOR</label>
                             </div>
                         </div>
 
@@ -70,7 +71,6 @@
                                 <i class="small material-icons">lock</i>
                                 <input name="password2" type="password" class="validate" required id="id_password2">
                                 <label for="id_password2">Confirmação da Senha</label>
-                                <small style="color: grey">Repita senha.</small>
                             </div>
                         </div>
 
@@ -90,5 +90,12 @@
         </div>
     </form>
 </div>
+
+<script>
+
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+</script>
 
 {% endblock content %}
