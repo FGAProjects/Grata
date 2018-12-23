@@ -3,6 +3,51 @@
 
 {% block content %}
 
+<div class="container" align="left">
 
-<h2>{{meeting.project}}</h2>
+	<table class="centered responsive-table">
+
+		<thead>
+			<tr>
+				<th>Número</th>
+				<th>Assunto</th>
+				<th>Projeto</th>
+				<th>Líder da Reunião</th>
+				<th>Documentador</th>
+				<th>Data Inicial</th>
+				<th>Data Final</th>
+				<th>Hora Início</th>
+				<th>Hora Final</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<tr>
+				<td>{{meeting.id}}</td>
+				<td>{{meeting.subject_matter}}</td>
+				<td>{{meeting.project}}</td>
+				<td>{{meeting.meeting_leader}}</td>
+				<td>{{meeting.documentary}}</td>
+				<td>{{meeting.first_date}}</td>
+				<td>{{meeting.final_date}}</td>
+				<td>{{meeting.first_hour}}</td>
+				<td>{{meeting.final_hour}}</td>
+				<td>{{meeting.status}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="container">
+
+	<a href="{% url 'meeting_list' %}"
+	   class="btn green darken-4 waves-effect waves-light right">Voltar</a>
+	<a href="{% url 'meeting_delete' meeting.id%}"
+	   class="btn red accent-4 waves-effect waves-light right">Apagar Reunião</a>
+	<a href="{% url 'meeting_edit' meeting.id%}"
+	   class="btn blue darken-3 waves-effect waves-light right">Editar Reunião</a>
+</div>
+
 {% endblock content %}

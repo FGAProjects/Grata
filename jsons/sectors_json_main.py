@@ -2,7 +2,6 @@ import json
 
 class Setores(object):
 
-
     def convert_list_json(self):
 
         sector_list = [ '',

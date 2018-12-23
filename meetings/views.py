@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from meetings.models import Meeting
-from meetings.forms import MeetingForm
+from meetings.forms import MeetingForm,EditMeetingForm
 
 @login_required
 def new_meeting(request):
@@ -34,12 +34,12 @@ def show_meeting(request,pk):
 def edit_meeting(request,pk):
 
     meeting = Meeting.objects.get(id=pk)
-    meeting_form = MeetingForm(request.POST or None, instance=meeting)
+    meeting_form = EditMeetingForm(request.POST or None, instance=meeting)
 
     if meeting_form.is_valid():
 
         meeting_form.save()
-        return redirect('meeting_list')
+        return redirect('meeting_show', pk=meeting.id)
 
     return render(request, 'meetings/edit_meeting.html', {'meeting': meeting})
 

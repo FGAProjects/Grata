@@ -100,13 +100,24 @@
                         </div>
 
                         <div class="row">
+                            <div class="input-field col s8">
+                                <i class="mdi-communication-call prefix"></i>
+                                <i class="small material-icons">call</i>
+                                <input name="status" type="text" class="validate"
+                                       required id="id_status" maxlength="10"
+                                        value="{{meeting.status}}">
+                                <label for="id_status">Status</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
 	                        <div class="input-field col s5">
-		                        <button class="btn cyan waves-effect waves-light right" type="submit">Cadastrar
+		                        <button class="btn cyan waves-effect waves-light right" type="submit">Alterar
 			                       <i class="mdi-content-send right"></i>
 		                        </button>
 	                        </div>
                             <div class="input-field col s6">
-		                        <a href="{% url 'meeting_list' %}"
+		                        <a href="{% url 'meeting_show' meeting.id%}"
                                    class="btn orange darken-1 waves-effect waves-light right">Cancelar</a>
 	                        </div>
                         </div>
