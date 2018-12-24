@@ -20,6 +20,7 @@ urlpatterns = [
     path('novo_usuario', client_views.new_client, name='client_new'),
     path('editar_perfil/', client_views.client_update, name='client_edit'),
     path('excluir_perfil/', client_views.client_delete, name='client_delete'),
+    path('lista_de_usuarios/<int:pk>', client_views.list_users, name='client_list'),
 
     #Meetings
     path('reunioes/', meeting_views.list_meeting, name='meeting_list'),

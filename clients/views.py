@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 from clients.forms import ClientSignUp,EditClientForm
+from meetings.models import Meeting
+
 from jsons.sectors_json_main import Setores
 
 def new_client(request):
@@ -85,18 +87,15 @@ def client_delete(request):
     if request.method == 'POST':
 
         client.delete()
-        messages.success(request, 'Usuário Excluído Com Sucesso')
+        messages.success(request, 'Usuário Excluído Com Sucesso!')
         return redirect('logout')
 
     return render(request, 'clients/delete_client.html', {'client': client})
 
-
 @login_required
-def list_users(request):
+def list_users(request,pk):
 
     client = User.objects.all()
+    meeting = Meeting.objects.get(id=pk)
 
-    """
-        Aqui vai pegar todos os usuários para adicionar a reunião
-    """
-    pass
+    return render(request, 'clients/list_clients.html',{'clients':client,'meeting':meeting})

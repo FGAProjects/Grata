@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib import messages
 
 from meetings.models import Meeting
@@ -15,10 +16,6 @@ def new_meeting(request):
         meeting.save()
         messages.success(request,'Reunião Criada Com Sucesso!')
         return redirect('meeting_list')
-
-    else:
-
-        messages.warning(request, 'Houve Algum Com o Formulário. Contate o Desenvolvedor Responsável!')
 
     return render(request, 'meetings/new_meeting.html', {'meeting': meeting})
 
@@ -63,3 +60,16 @@ def delete_meeting(request,pk):
         return redirect('meeting_list')
 
     return render(request, 'meetings/delete_meeting.html', {'meeting': meeting})
+
+@login_required
+def add_client_to_meeting(request,pk):
+
+    clients = User.objects.all()
+
+    meeting = Meeting.objects.get(id=pk)
+    print(request.user.id)
+    #
+    # client = User.objects.get(id=request.user.id)
+    # meeting.clients.add(client)
+
+    return render(request, 'clients/list_clients.html', {'clients':clients, 'meeting':meeting})

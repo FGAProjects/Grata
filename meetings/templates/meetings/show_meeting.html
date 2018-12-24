@@ -3,9 +3,11 @@
 
 {% block content %}
 
-<div class="container" align="left">
+<div class="container">
 
 	<table class="centered responsive-table">
+
+		<h4 align="center">Informações da Reunião</h4>
 
 		<thead>
 			<tr>
@@ -47,7 +49,41 @@
 	<a href="{% url 'meeting_delete' meeting.id%}"
 	   class="btn red accent-4 waves-effect waves-light right">Apagar Reunião</a>
 	<a href="{% url 'meeting_edit' meeting.id%}"
-	   class="btn blue darken-3 waves-effect waves-light right">Editar Reunião</a>
+	   class="btn blue darken-4 waves-effect waves-light right">Editar Reunião</a>
+</div>
+
+<div class="container">
+
+	<table class="centered responsive-table">
+
+		<h4 align="center">Participantes da Reunião</h4>
+
+		<thead>
+		<tr>
+			<th>
+				<a  href="{% url 'client_list' meeting.id %}" class="waves-effect teal accent-4 btn">
+					<i class="material-icons center">
+						add
+					</i>
+					Participantes
+				</a>
+			</th>
+			<th>Nome</th>
+			<th>Email</th>
+		  	<th>Ramal</th>
+	  	</tr>
+	</thead>
+
+		<tbody>
+
+			<tr>
+				<td></td>
+				<td>{{meeting.id}}</td>
+				<td>{{meeting.subject_matter}}</td>
+				<td>{{meeting.project}}</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 {% endblock content %}

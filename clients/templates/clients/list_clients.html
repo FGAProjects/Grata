@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+
+	<table class="centered responsive-table">
+
+		<h4 align="center">Lista de Usuários</h4>
+
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Email</th>
+		  	<th>Ramal</th>
+			<th>Setor</th>
+			<th>Adicionar</th>
+			<!--<th>Remover</th>-->
+	  	</tr>
+	</thead>
+
+		<tbody>
+
+			<tr>
+				{% for client in clients %}
+					<td>{{client.id}}</td>
+					<td>{{client.first_name}}</td>
+					<td>{{client.username}}</td>
+					<td>{{client.last_name}}</td>
+					<td>{{client.email}}</td>
+					<td>
+						<a  href="#" class="waves-effect teal accent-4 btn">
+							Adicionar
+						</a>
+					</td>
+					<!--<td>-->
+						<!--<a  href="#" class="waves-effect red accent-4 btn">-->
+							<!--Remover-->
+						<!--</a>-->
+					<!--</td>-->
+				{% endfor %}
+			</tr>
+		</tbody>
+	</table>
+</div>
+{% endblock content %}
