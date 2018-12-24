@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+{% block content %}
+
+	{% if messages %}
+
+		{% for message in messages %}
+
+			{% if message.tags == 'success' %}
+
+				<div class="card-content green-text" align="center" style="font-size:30px;text-aligh:center;">
+
+					{{message}}
+				</div>
+			{% else %}
+
+				<div class="card-content green-text" align="center" style="font-size:30px;text-aligh:center;">
+
+					{{message}}
+				</div>
+			{% endif %}
+
+		{% endfor %}
+
+	{% endif%}
+
+{% endblock content %}

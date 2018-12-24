@@ -1,8 +1,7 @@
-from django.views.generic import DeleteView
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 from clients.forms import ClientSignUp,EditClientForm
 from jsons.sectors_json_main import Setores
@@ -29,12 +28,13 @@ def new_client(request):
             user.email = user.client.sector
             user.last_name = user.client.ramal
             user.save()
+            messages.success(request, 'O Usuário ' + user.first_name + ' Foi Cadastrado Com Sucesso!')
 
             return redirect('/')
 
         else:
 
-            print('Form is invalid')
+            messages.warning(request, 'Houve Algum Com o Formulário. Contate o Desenvolvedor Responsável!')
     else:
 
         form = ClientSignUp()
@@ -63,12 +63,13 @@ def client_update(request):
             user.first_name = form.cleaned_data.get('first_name')
             user.email = form.cleaned_data.get('sector')
             user.save()
+            messages.success(request, 'Suas informações Foram Alteradas Com Sucesso!')
 
             return redirect('client_show')
 
         else:
 
-            print('Form invalid')
+            messages.warning(request, 'Houve Algum Com o Formulário. Contate o Desenvolvedor Responsável!')
 
     else:
 
@@ -84,6 +85,7 @@ def client_delete(request):
     if request.method == 'POST':
 
         client.delete()
+        messages.success(request, 'Usuário Excluído Com Sucesso')
         return redirect('logout')
 
     return render(request, 'clients/delete_client.html', {'client': client})
@@ -98,12 +100,3 @@ def list_users(request):
         Aqui vai pegar todos os usuários para adicionar a reunião
     """
     pass
-
-class ClientDelete(DeleteView):
-
-    model = EditClientForm.Meta.model
-    template_name = "clients/delete_client.html"
-
-    def get_success_url(self):
-
-        return reverse_lazy('logout')

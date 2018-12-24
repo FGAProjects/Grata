@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from meetings.models import Meeting
 from meetings.forms import MeetingForm,EditMeetingForm
@@ -12,7 +13,12 @@ def new_meeting(request):
     if meeting.is_valid():
 
         meeting.save()
+        messages.success(request,'Reunião Criada Com Sucesso!')
         return redirect('meeting_list')
+
+    else:
+
+        messages.warning(request, 'Houve Algum Com o Formulário. Contate o Desenvolvedor Responsável!')
 
     return render(request, 'meetings/new_meeting.html', {'meeting': meeting})
 
@@ -39,6 +45,8 @@ def edit_meeting(request,pk):
     if meeting_form.is_valid():
 
         meeting_form.save()
+
+        messages.success(request, 'Informações da Reunião Foram Alteradas Com Sucesso!')
         return redirect('meeting_show', pk=meeting.id)
 
     return render(request, 'meetings/edit_meeting.html', {'meeting': meeting})
@@ -51,6 +59,7 @@ def delete_meeting(request,pk):
     if request.method == 'POST':
 
         meeting.delete()
+        messages.success(request, 'Reunião Excluída Com Sucesso')
         return redirect('meeting_list')
 
     return render(request, 'meetings/delete_meeting.html', {'meeting': meeting})
