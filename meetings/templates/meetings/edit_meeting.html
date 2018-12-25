@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="input-field col s8">
                                 <i class="mdi-communication-email prefix"></i>
-                                <i class="small material-icons">account_circle</i>
+                                <i class="small material-icons">comment</i>
                                 <input name="subject_matter" type="text" class="validate"
                                        required id="id_subject_matter" minlength="4" maxlength="40"
 										value="{{meeting.subject_matter}}">
@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="input-field col s8">
                                 <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
+                                <i class="small material-icons">featured_play_list</i>
                                 <input name="project" type="text" class="validate"
                                        required id="id_project" maxlength="40"
 										value="{{meeting.project}}">
@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="input-field col s8">
                                 <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
+                                <i class="small material-icons">person</i>
                                 <input name="meeting_leader" type="text" class="validate"
                                        required id="id_meeting_leader" maxlength="40"
 										value="{{meeting.meeting_leader}}">
@@ -52,7 +52,7 @@
                         <div class="row">
                             <div class="input-field col s8">
                                 <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
+                                <i class="small material-icons">person_outline</i>
                                 <input name="documentary" type="text" class="validate"
                                        required id="id_documentary" maxlength="40"
 										value="{{meeting.documentary}}">
@@ -63,7 +63,7 @@
                         <div class="row">
                             <div class="input-field col s4">
                                 <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
+                                <i class="small material-icons">date_range</i>
                                 <input name="first_date" type="text" class="datepicker"
                                        required id="id_first_date" maxlength="12"
 										value="{{meeting.first_date}}">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="input-field col s4">
                                 <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
+                                <i class="small material-icons">date_range</i>
                                 <input name="final_date" type="text" class="datepicker"
                                        required id="id_final_date" maxlength="12"
 										value="{{meeting.final_date}}">
@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="input-field col s4">
                                 <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
+                                <i class="small material-icons">timer</i>
                                 <input name="first_hour" type="text" class="timepicker"
                                        required id="id_first_hour" maxlength="10"
 										value="{{meeting.first_hour}}">
@@ -91,22 +91,11 @@
 
                             <div class="input-field col s4">
                                 <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
+                                <i class="small material-icons">timer</i>
                                 <input name="final_hour" type="text" class="timepicker"
                                        required id="id_final_hour" maxlength="10"
-										value="{{meeting.final_date}}">
+										value="{{meeting.final_hour}}">
                                 <label for="id_final_hour">Hora Final</label>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="input-field col s8">
-                                <i class="mdi-communication-call prefix"></i>
-                                <i class="small material-icons">call</i>
-                                <input name="status" type="text" class="validate"
-                                       required id="id_status" maxlength="10"
-                                        value="{{meeting.status}}">
-                                <label for="id_status">Status</label>
                             </div>
                         </div>
 

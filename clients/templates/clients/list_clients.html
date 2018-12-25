@@ -17,7 +17,6 @@
 		  	<th>Ramal</th>
 			<th>Setor</th>
 			<th>Adicionar</th>
-			<!--<th>Remover</th>-->
 	  	</tr>
 	</thead>
 
@@ -31,7 +30,7 @@
 					<td>{{client.last_name}}</td>
 					<td>{{client.email}}</td>
 					<td>
-						<a  href="#" class="waves-effect teal accent-4 btn">
+						<a  href="{% url 'meeting_to_client' meeting.id %}" class="waves-effect teal accent-4 btn">
 							Adicionar
 						</a>
 					</td>

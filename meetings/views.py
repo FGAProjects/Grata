@@ -61,15 +61,19 @@ def delete_meeting(request,pk):
 
     return render(request, 'meetings/delete_meeting.html', {'meeting': meeting})
 
-@login_required
-def add_client_to_meeting(request,pk):
+# @login_required
+# def add_client_to_meeting(request,pk):
+#
+#     meeting = Meeting.objects.get(id=pk)
+#     client = User.objects.get(id=request.user.id)
+#
+#     meeting.clients.add(client)
+#
+#     return redirect('meeting_show')
+#
+#     # print(request.user.id)
+#     #
+#     # client = User.objects.get(id=request.user.id)
+#     # meeting.clients.add(client)
 
-    clients = User.objects.all()
 
-    meeting = Meeting.objects.get(id=pk)
-    print(request.user.id)
-    #
-    # client = User.objects.get(id=request.user.id)
-    # meeting.clients.add(client)
-
-    return render(request, 'clients/list_clients.html', {'clients':clients, 'meeting':meeting})
