@@ -7,7 +7,7 @@ class MeetingForm(ModelForm):
     class Meta:
 
         model = Meeting
-        fields = ['subject_matter', 'project', 'meeting_leader', 'documentary', 'first_date',
+        fields = ['subject_matter', 'project', 'meeting_leader', 'local', 'documentary', 'first_date',
                   'final_date', 'first_hour', 'final_hour']
 
 class EditMeetingForm(ModelForm):
@@ -15,5 +15,5 @@ class EditMeetingForm(ModelForm):
     class Meta:
 
         model = Meeting
-        fields = ['subject_matter', 'project', 'meeting_leader', 'documentary', 'first_date',
+        fields = ['subject_matter', 'project', 'meeting_leader', 'local', 'documentary', 'first_date',
                   'final_date', 'first_hour', 'final_hour']

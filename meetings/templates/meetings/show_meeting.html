@@ -16,6 +16,7 @@
 				<th>Projeto</th>
 				<th>Líder da Reunião</th>
 				<th>Documentador</th>
+				<th>Local</th>
 				<th>Data Inicial</th>
 				<th>Data Final</th>
 				<th>Hora Início</th>
@@ -32,6 +33,7 @@
 				<td>{{meeting.project}}</td>
 				<td>{{meeting.meeting_leader}}</td>
 				<td>{{meeting.documentary}}</td>
+				<td>{{meeting.local}}</td>
 				<td>{{meeting.first_date}}</td>
 				<td>{{meeting.final_date}}</td>
 				<td>{{meeting.first_hour}}</td>
@@ -47,7 +49,7 @@
 	<a href="{% url 'meeting_list' %}"
 	   class="btn green darken-4 waves-effect waves-light right">Voltar</a>
 	<a href="{% url 'meeting_delete' meeting.id%}"
-	   class="btn red accent-4 waves-effect waves-light right">Apagar Reunião</a>
+	   class="btn red accent-4 waves-effect waves-light right">Cancelar Reunião</a>
 	<a href="{% url 'meeting_edit' meeting.id%}"
 	   class="btn blue darken-4 waves-effect waves-light right">Editar Reunião</a>
 </div>
