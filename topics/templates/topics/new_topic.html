@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container" style="width:520px">
+
+	<h2 align="center">Tópicos da Reunião</h2>
+
+	<div class="form-group" align="">
+		<form name="add_name" id="add_name">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dynamic_field">
+					<tr>
+						<td><input type="text" name="name[]" placeholder="Coloque o tópico" class="form-control name_list" /></td>
+						<td><button type="button" name="add" id="add" class="waves-effect green darken-2 btn">Adicionar</button></td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+
+</div>
+
+
+<script>
+$(document).ready(function(){
+	var i=1;
+	$('#add').click(function(){
+		i++;
+		$('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Coloque o tópico" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="waves-effect red accent-4 btn btn_remove">Remover</button></td></tr>');
+	});
+
+	$(document).on('click', '.btn_remove', function(){
+		var button_id = $(this).attr("id");
+		$('#row'+button_id+'').remove();
+	});
+});
+</script>
+
+{% endblock content %}

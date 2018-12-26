@@ -6,6 +6,8 @@ from django.conf.urls import url
 
 from clients import views as client_views
 from meetings import views as meeting_views
+from topics import views as topics_view
+
 urlpatterns = [
 
     #Admin
@@ -28,7 +30,9 @@ urlpatterns = [
     path('nova_reuniao/', meeting_views.new_meeting, name='meeting_new'),
     path('editar_reuniao/<int:pk>', meeting_views.edit_meeting, name='meeting_edit'),
     path('excluir_reuniao/<int:pk>', meeting_views.delete_meeting, name='meeting_delete'),
-    # path('adicionar_cliente/<int:pk>', meeting_views.add_client_to_meeting, name='meeting_to_client'),
+
+    #Topic
+    path('novo_topico/<int:pk>', topics_view.new_topic, name='new_topic'),
 ]
 
 

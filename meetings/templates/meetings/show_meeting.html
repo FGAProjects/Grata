@@ -44,48 +44,83 @@
 	</table>
 </div>
 
-<div class="container">
+{% if request.user.is_staff %}
+	<div class="container">
 
-	<a href="{% url 'meeting_list' %}"
-	   class="btn green darken-4 waves-effect waves-light right">Voltar</a>
-	<a href="{% url 'meeting_delete' meeting.id%}"
-	   class="btn red accent-4 waves-effect waves-light right">Cancelar Reunião</a>
-	<a href="{% url 'meeting_edit' meeting.id%}"
-	   class="btn blue darken-4 waves-effect waves-light right">Editar Reunião</a>
-</div>
+		<a href="{% url 'meeting_list' %}"
+		   class="btn green darken-4 waves-effect waves-light right">Voltar</a>
+		<a href="{% url 'meeting_delete' meeting.id%}"
+		   class="btn red accent-4 waves-effect waves-light right">Cancelar Reunião</a>
+		<a href="{% url 'meeting_edit' meeting.id%}"
+		   class="btn blue darken-4 waves-effect waves-light right">Editar Reunião</a>
+	</div>
 
-<div class="container">
+	<div class="container">
 
-	<table class="centered responsive-table">
+		<table class="centered responsive-table">
 
-		<h4 align="center">Participantes da Reunião</h4>
+			<h4 align="center">Participantes da Reunião</h4>
 
-		<thead>
-		<tr>
-			<th>
-				<a  href="{% url 'client_list' meeting.id %}" class="waves-effect teal accent-4 btn">
-					<i class="material-icons center">
-						add
-					</i>
-					Participantes
-				</a>
-			</th>
-			<th>Nome</th>
-			<th>Email</th>
-		  	<th>Ramal</th>
-	  	</tr>
-	</thead>
+			<thead>
+				<tr>
+					<th>
+						<a  href="{% url 'client_list' meeting.id %}" class="waves-effect green darken-2 btn">
+							<i class="material-icons center">
+								add
+							</i>
+							Participantes
+						</a>
+					</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Ramal</th>
+				</tr>
+			</thead>
 
-		<tbody>
+			<tbody>
 
-			<tr>
-				<td></td>
-				<td>{{meeting.id}}</td>
-				<td>{{meeting.subject_matter}}</td>
-				<td>{{meeting.project}}</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+				<tr>
+					<td></td>
+					<td>{{meeting.id}}</td>
+					<td>{{meeting.subject_matter}}</td>
+					<td>{{meeting.project}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
+	<div class="container">
+
+		<table class="centered responsive-table">
+
+			<h4 align="center">Tópicos da Reunião</h4>
+
+			<thead>
+				<tr>
+					<th>
+						<a  href="{% url 'new_topic' meeting.id%}" class="waves-effect green darken-2 btn">
+							<i class="material-icons center">
+								add
+							</i>
+							Tópicos
+						</a>
+					</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Ramal</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr>
+					<td></td>
+					<td>{{meeting.id}}</td>
+					<td>{{meeting.subject_matter}}</td>
+					<td>{{meeting.project}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+{% endif %}
 {% endblock content %}

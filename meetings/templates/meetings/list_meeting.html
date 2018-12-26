@@ -21,14 +21,17 @@
 
  	<thead>
 		<tr>
-			<th>
-				<a  href="{% url 'meeting_new' %}" class="waves-effect green darken-2 btn">
-					<i class="material-icons center">
-						add
-					</i>
-					Reunião
-				</a>
-			</th>
+			{% if request.user.is_staff %}
+
+				<th>
+					<a  href="{% url 'meeting_new' %}" class="waves-effect green darken-2 btn">
+						<i class="material-icons center">
+							add
+						</i>
+						Reunião
+					</a>
+				</th>
+			{% endif %}
 			<th>Número</th>
 			<th>Assunto</th>
 		  	<th>Projeto</th>
@@ -39,7 +42,10 @@
 	<tbody>
 		{% for meeting in list_meeting %}
     		<tr>
-				<td></td>
+				{% if request.user.is_staff %}
+
+					<td></td>
+				{% endif %}
 				<td>{{ meeting.id }}</td>
 				<td><a href="{% url 'meeting_show' meeting.id%}">{{meeting.subject_matter}}</a></td>
 				<td>{{ meeting.project }}</td>
