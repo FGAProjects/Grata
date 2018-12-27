@@ -9,11 +9,6 @@
 
 		<h2 align="center">Tópicos da Reunião</h2>
 
-		<input type="hidden" name="form-TOTAL_FORMS" value="1" id="id_form-TOTAL_FORMS">
-		<input type="hidden" name="form-INITIAL_FORMS" value="0" id="id_form-INITIAL_FORMS">
-		<input type="hidden" name="form-MIN_NUM_FORMS" value="0" id="id_form-MIN_NUM_FORMS">
-		<input type="hidden" name="form-MAX_NUM_FORMS" value="1000" id="id_form-MAX_NUM_FORMS">
-
 		<div class="form-group">
 			<form name="add_name" id="add_name">
 				<div class="table-responsive">
@@ -23,9 +18,9 @@
 								<div class="input-field col s8">
 									<i class="mdi-communication-call prefix"></i>
 									<i class="small material-icons">person</i>
-									<input name="form-0-topic_name" type="text" class="validate"
-										   required id="id_form-0-topic_name" maxlength="40">
-									<label for="id_form-0-topic_name">Tópico</label>
+									<input name="topic_name" type="text" class="validate"
+										   required id="id_topic_name" maxlength="40">
+									<label for="id_topic_name">Tópico</label>
 								</div>
 							</td>
 							<td>
@@ -52,27 +47,50 @@
 
 	<table class="centered responsive-table">
 
-			<h4 align="center">Lista de Tópicos</h4>
+		<h4 align="center">Lista de Tópicos Dessa Reunião</h4>
 
-			<thead>
+		<thead>
+			<tr>
+				<th>Tópicos</th>
+				<th>Remover</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for topic in list_meeting %}
 				<tr>
-					<th>Tópicos</th>
-					<th>Remover</th>
+					<td>{{topic.topic_name}}</td>
+					<td><a href="{% url 'delete_topic' topic.id meeting.id %}"
+							   class="btn red darken-1 waves-effect waves-light right">Excluir Tópico</a></td>
+			{% endfor %}
 				</tr>
-			</thead>
-
-			<tbody>
-				{% for topic in lists %}
-					<tr>
-						<td>{{topic.topic_name}}</td>
-						<td><a href="{% url 'delete_topic' topic.id meeting.id %}"
-                                   class="btn red darken-1 waves-effect waves-light right">Excluir Tópico</a></td>
-				{% endfor %}
-					</tr>
-			</tbody>
-		</table>
-
+		</tbody>
+	</table>
 </div>
 
+<div class="container" style="width:520px">
+
+	<table class="centered responsive-table">
+
+		<h4 align="center">Lista de Tópicos</h4>
+
+		<thead>
+			<tr>
+				<th>Tópicos</th>
+				<th>Remover</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for topic in lists %}
+				<tr>
+					<td>{{topic.topic_name}}</td>
+					<td><a href="{% url 'delete_topic' topic.id meeting.id %}"
+							   class="btn red darken-1 waves-effect waves-light right">Excluir Tópico</a></td>
+			{% endfor %}
+				</tr>
+		</tbody>
+	</table>
+</div>
 
 {% endblock content %}

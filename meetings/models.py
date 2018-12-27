@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from topics.models import Topic
+
 class Meeting(models.Model):
 
     subject_matter = models.CharField(max_length=40)
@@ -13,6 +15,8 @@ class Meeting(models.Model):
     final_date = models.CharField(max_length=12)
     first_hour = models.CharField(max_length=10)
     final_hour = models.CharField(max_length=10)
+
+    topics_meeting = models.ManyToManyField(Topic)
 
     def __str__(self):
 
