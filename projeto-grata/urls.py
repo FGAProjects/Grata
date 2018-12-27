@@ -6,7 +6,8 @@ from django.conf.urls import url
 
 from clients import views as client_views
 from meetings import views as meeting_views
-from topics import views as topics_view
+from topics import views as topics_views
+from shedules import views as shedules_views
 
 urlpatterns = [
 
@@ -32,9 +33,11 @@ urlpatterns = [
     path('excluir_reuniao/<int:pk>', meeting_views.delete_meeting, name='meeting_delete'),
 
     #Topic
-    path('novo_topico/<int:pk>', topics_view.new_topic, name='new_topic'),
-    path('excluir_topico/<int:pk>/<int:pk_meeting>', topics_view.delete_topic, name='delete_topic'),
-]
+    path('novo_topico/<int:pk>', topics_views.new_topic, name='new_topic'),
+    path('excluir_topico/<int:pk>/<int:pk_meeting>', topics_views.delete_topic, name='delete_topic'),
 
+    #Shedule
+    path('nova_pauta/<int:pk>', shedules_views.new_shedule, name='shedule_new'),
+]
 
 urlpatterns += staticfiles_urlpatterns()

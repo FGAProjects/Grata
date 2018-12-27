@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.forms import modelformset_factory
 
 from topics.models import Topic
 from topics.forms import TopicForm
@@ -21,6 +20,7 @@ def new_topic(request,pk):
         topic = topic_form.save()
 
         meeting.topics_meeting.add(topic)
+        messages.success(request, 'Tópico Adicionado Com Sucesso!')
         return redirect('new_topic', pk = meeting.id)
 
     topic_form = TopicForm()

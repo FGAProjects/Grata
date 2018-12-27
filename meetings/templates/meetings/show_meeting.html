@@ -119,5 +119,36 @@
 			</tbody>
 		</table>
 	</div>
+
+	<div class="container">
+
+		<table class="centered responsive-table">
+
+			<h4 align="center">Ata de Reunião</h4>
+
+			<thead>
+				<tr>
+					<th>
+						<a  href="{% url 'shedule_new' meeting.id%}" class="waves-effect green darken-2 btn">
+							<i class="material-icons center">
+								add
+							</i>
+							Pauta
+						</a>
+					</th>
+					<th>Pauta</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for topic in list_topics %}
+				<tr>
+					<td></td>
+					<td><li>{{topic.topic_name}}</li></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endif %}
 {% endblock content %}

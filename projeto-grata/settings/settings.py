@@ -17,9 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'projeto-grata',
     'clients',
-    'meetings',
-    'shedule',
     'topics',
+    'shedules',
+    'meetings',
 ]
 
 MIDDLEWARE = [

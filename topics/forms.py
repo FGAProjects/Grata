@@ -6,4 +6,4 @@ class TopicForm(ModelForm):
     class Meta:
 
         model = Topic
-        fields = ("topic_name",)
+        fields = ('topic_name',)

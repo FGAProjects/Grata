@@ -47,7 +47,7 @@
 					<td></td>
 				{% endif %}
 				<td>{{ meeting.id }}</td>
-				<td><a href="{% url 'meeting_show' meeting.id%}">{{meeting.subject_matter}}</a></td>
+				<td><a href="{% url 'meeting_show' meeting.id %}">{{meeting.subject_matter}}</a></td>
 				<td>{{ meeting.project }}</td>
 				<td>{{ meeting.status}}</td>
 			</tr>
