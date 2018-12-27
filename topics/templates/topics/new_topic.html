@@ -5,37 +5,74 @@
 
 <div class="container" style="width:520px">
 
-	<h2 align="center">Tópicos da Reunião</h2>
+    <form method="post" class="form-horizontal" role="form">{% csrf_token %}
 
-	<div class="form-group" align="">
-		<form name="add_name" id="add_name">
-			<div class="table-responsive">
-				<table class="table table-bordered" id="dynamic_field">
+		<h2 align="center">Tópicos da Reunião</h2>
+
+		<input type="hidden" name="form-TOTAL_FORMS" value="1" id="id_form-TOTAL_FORMS">
+		<input type="hidden" name="form-INITIAL_FORMS" value="0" id="id_form-INITIAL_FORMS">
+		<input type="hidden" name="form-MIN_NUM_FORMS" value="0" id="id_form-MIN_NUM_FORMS">
+		<input type="hidden" name="form-MAX_NUM_FORMS" value="1000" id="id_form-MAX_NUM_FORMS">
+
+		<div class="form-group">
+			<form name="add_name" id="add_name">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dynamic_field">
+						<tr>
+							<td>
+								<div class="input-field col s8">
+									<i class="mdi-communication-call prefix"></i>
+									<i class="small material-icons">person</i>
+									<input name="form-0-topic_name" type="text" class="validate"
+										   required id="id_form-0-topic_name" maxlength="40">
+									<label for="id_form-0-topic_name">Tópico</label>
+								</div>
+							</td>
+							<td>
+								<button type="submit" name="add" id="add"
+										class="waves-effect cyan btn">
+									Adicionar
+								</button>
+							</td>
+							<td>
+								<a href="{% url 'meeting_show' meeting.id %}"
+				   					class="btn green darken-4 waves-effect waves-light right">
+									Voltar
+								</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+		</div>
+	</form>
+</div>
+
+<div class="container" style="width:520px">
+
+	<table class="centered responsive-table">
+
+			<h4 align="center">Lista de Tópicos</h4>
+
+			<thead>
+				<tr>
+					<th>Tópicos</th>
+					<th>Remover</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for topic in lists %}
 					<tr>
-						<td><input type="text" name="name[]" placeholder="Coloque o tópico" class="form-control name_list" /></td>
-						<td><button type="button" name="add" id="add" class="waves-effect green darken-2 btn">Adicionar</button></td>
+						<td>{{topic.topic_name}}</td>
+						<td><a href="{% url 'delete_topic' topic.id meeting.id %}"
+                                   class="btn red darken-1 waves-effect waves-light right">Excluir Tópico</a></td>
+				{% endfor %}
 					</tr>
-				</table>
-			</div>
-		</form>
-	</div>
+			</tbody>
+		</table>
 
 </div>
 
-
-<script>
-$(document).ready(function(){
-	var i=1;
-	$('#add').click(function(){
-		i++;
-		$('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Coloque o tópico" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="waves-effect red accent-4 btn btn_remove">Remover</button></td></tr>');
-	});
-
-	$(document).on('click', '.btn_remove', function(){
-		var button_id = $(this).attr("id");
-		$('#row'+button_id+'').remove();
-	});
-});
-</script>
 
 {% endblock content %}

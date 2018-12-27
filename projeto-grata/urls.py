@@ -33,6 +33,7 @@ urlpatterns = [
 
     #Topic
     path('novo_topico/<int:pk>', topics_view.new_topic, name='new_topic'),
+    path('excluir_topico/<int:pk>/<int:pk_meeting>', topics_view.delete_topic, name='delete_topic'),
 ]
 
 

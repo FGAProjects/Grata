@@ -4,4 +4,4 @@ from meetings.models import Meeting
 
 class Topic(models.Model):
 
-    topic_name = models.CharField(max_length=25)
+    topic_name = models.CharField(max_length=25,blank=True)
