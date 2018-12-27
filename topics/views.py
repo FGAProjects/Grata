@@ -14,7 +14,7 @@ def new_topic(request,pk):
 
     meeting = get_object_or_404(Meeting, pk=pk)
 
-    list_meeting = meeting.topics_meeting.all()
+    list_topics = meeting.topics_meeting.all()
 
     if topic_form.is_valid():
 
@@ -25,7 +25,7 @@ def new_topic(request,pk):
 
     topic_form = TopicForm()
 
-    return render(request, 'topics/new_topic.html', {'form': topic_form, 'list_meeting': list_meeting,
+    return render(request, 'topics/new_topic.html', {'form': topic_form, 'list_topics': list_topics,
                                                      'meeting': meeting})
 
 def delete_topic(request,pk,pk_meeting):

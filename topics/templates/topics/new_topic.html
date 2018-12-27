@@ -57,32 +57,7 @@
 		</thead>
 
 		<tbody>
-			{% for topic in list_meeting %}
-				<tr>
-					<td>{{topic.topic_name}}</td>
-					<td><a href="{% url 'delete_topic' topic.id meeting.id %}"
-							   class="btn red darken-1 waves-effect waves-light right">Excluir Tópico</a></td>
-			{% endfor %}
-				</tr>
-		</tbody>
-	</table>
-</div>
-
-<div class="container" style="width:520px">
-
-	<table class="centered responsive-table">
-
-		<h4 align="center">Lista de Tópicos</h4>
-
-		<thead>
-			<tr>
-				<th>Tópicos</th>
-				<th>Remover</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			{% for topic in lists %}
+			{% for topic in list_topics %}
 				<tr>
 					<td>{{topic.topic_name}}</td>
 					<td><a href="{% url 'delete_topic' topic.id meeting.id %}"

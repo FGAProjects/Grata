@@ -29,8 +29,9 @@ def list_meeting(request):
 def show_meeting(request,pk):
 
     meeting = get_object_or_404(Meeting,pk=pk)
+    list_topics = meeting.topics_meeting.all()
 
-    return render(request, 'meetings/show_meeting.html',{'meeting':meeting})
+    return render(request, 'meetings/show_meeting.html',{'meeting':meeting,'list_topics':list_topics})
 
 @login_required
 def edit_meeting(request,pk):
