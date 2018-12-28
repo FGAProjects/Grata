@@ -62,7 +62,7 @@
 
 	<div class="container">
 
-		<table class="centered responsive-table">
+		<table class="centered responsive-table highlight">
 
 			<h4 align="center">Participantes da Reunião</h4>
 
@@ -96,7 +96,7 @@
 
 	<div class="container">
 
-		<table class="centered responsive-table">
+		<table class="centered responsive-table highlight">
 
 			<h4 align="center">Tópicos da Reunião</h4>
 
@@ -121,7 +121,7 @@
 				<tr>
 
 					<td></td>
-					<td><li>{{topic.topic_name}}</li></td>
+					<td>{{topic.topic_name}}</td>
 					<td><a href="{% url 'topic_delete' topic.id meeting.id %}"
 							   class="btn red darken-1 waves-effect waves-light">Excluir Tópico</a></td>
 				</tr>
@@ -132,7 +132,7 @@
 
 	<div class="container">
 
-		<table class="centered responsive-table">
+		<table class="centered responsive-table highlight">
 
 			<h4 align="center">Pauta de Reunião</h4>
 

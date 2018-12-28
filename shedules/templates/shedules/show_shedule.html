@@ -5,7 +5,7 @@
 
 <div class="container">
 
-	<table class="centered responsive-table">
+	<table class="centered responsive-table highlight">
 
 		<h4 align="center">Informações da Pauta</h4>
 
@@ -25,9 +25,9 @@
 
 		<tbody>
 
-			<tr>
+            <tr>
 
-				<td>{{shedule.id}}</td>
+               	<td>{{shedule.id}}</td>
 				<td>{{shedule.introduction}}</td>
 				<td>{{shedule.review_of_the_management_perspective}}</td>
 				<td>{{shedule.vision_of_the_area_of_informativa}}</td>
@@ -35,11 +35,9 @@
 				{% for topic in list_topics %}
 
 					<td>{{topic.topic_name}}</td>
-					<td></td>
 				{% endfor %}
-			</tr>
-
-		</tbody>
+            </tr>
+          </tbody>
 	</table>
 </div>
 
