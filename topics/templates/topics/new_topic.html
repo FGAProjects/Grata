@@ -11,6 +11,7 @@
 
 		<div class="form-group">
 			<form name="add_name" id="add_name">
+
 				<div class="table-responsive">
 					<table class="table table-bordered" id="dynamic_field">
 						<tr>
@@ -38,6 +39,7 @@
 						</tr>
 					</table>
 				</div>
+
 			</form>
 		</div>
 	</form>
@@ -50,6 +52,7 @@
 		<h4 align="center">Lista de Tópicos Dessa Reunião</h4>
 
 		<thead>
+
 			<tr>
 				<th>Tópicos</th>
 				<th>Remover</th>
@@ -57,8 +60,11 @@
 		</thead>
 
 		<tbody>
+
 			{% for topic in list_topics %}
+
 				<tr>
+
 					<td>{{topic.topic_name}}</td>
 					<td><a href="{% url 'delete_topic' topic.id meeting.id %}"
 							   class="btn red darken-1 waves-effect waves-light right">Excluir Tópico</a></td>

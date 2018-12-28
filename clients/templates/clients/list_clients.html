@@ -10,20 +10,26 @@
 		<h4 align="center">Lista de Usuários</h4>
 
 		<thead>
-		<tr>
-			<th>ID</th>
-			<th>Nome</th>
-			<th>Email</th>
-		  	<th>Ramal</th>
-			<th>Setor</th>
-			<th>Adicionar</th>
-	  	</tr>
-	</thead>
+
+			<tr>
+
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Email</th>
+				<th>Ramal</th>
+				<th>Setor</th>
+				<th>Adicionar</th>
+
+			</tr>
+
+		</thead>
 
 		<tbody>
 
 			<tr>
+
 				{% for client in clients %}
+
 					<td>{{client.id}}</td>
 					<td>{{client.first_name}}</td>
 					<td>{{client.username}}</td>
@@ -34,14 +40,10 @@
 							Adicionar
 						</a>
 					</td>
-					<!--<td>-->
-						<!--<a  href="#" class="waves-effect red accent-4 btn">-->
-							<!--Remover-->
-						<!--</a>-->
-					<!--</td>-->
 				{% endfor %}
 			</tr>
 		</tbody>
 	</table>
 </div>
+
 {% endblock content %}
