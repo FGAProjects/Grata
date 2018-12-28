@@ -111,6 +111,7 @@
 						</a>
 					</th>
 					<th>Tópicos</th>
+					<th>Remover</th>
 				</tr>
 			</thead>
 
@@ -121,6 +122,8 @@
 
 					<td></td>
 					<td><li>{{topic.topic_name}}</li></td>
+					<td><a href="{% url 'topic_delete' topic.id meeting.id %}"
+							   class="btn red darken-1 waves-effect waves-light">Excluir Tópico</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -131,7 +134,7 @@
 
 		<table class="centered responsive-table">
 
-			<h4 align="center">Ata de Reunião</h4>
+			<h4 align="center">Pauta de Reunião</h4>
 
 			<thead>
 				<tr>
@@ -143,28 +146,24 @@
 							Pauta
 						</a>
 					</th>
-					<th>Pauta</th>
-					<th>Editar</th>
-					<th>Excluir</th>
+					<th>Número</th>
+					<th>Introdução</th>
 				</tr>
 			</thead>
 
 			<tbody>
+
 				{% for shedule in shedules %}
+
 				<tr>
+
 					<td></td>
-					<td>{{shedule.introduction}}</td>
+					<td>{{shedule.id}}</td>
 					<td>
-						<a href="{% url 'shedule_edit' meeting.id shedule.id %}"
-		   					class="btn blue darken-4 waves-effect waves-light">
-							Editar
+						<a href="{% url 'shedule_show' meeting.id shedule.id %}">
+							{{shedule.introduction}}
 						</a>
 					</td>
-					<td>
-						<a href="{% url 'shedule_delete' meeting.id shedule.id %}"
-		   					class="btn red accent-4 waves-effect waves-light">
-							Excluir
-						</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

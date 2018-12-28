@@ -10,16 +10,14 @@ from shedules.forms import SheduleForm
 def new_shedule(request,pk):
 
     shedule_form = SheduleForm(request.POST or None)
-
     meeting = get_object_or_404(Meeting, pk=pk)
-
     list_topics = meeting.topics_meeting.all()
 
     if shedule_form.is_valid():
 
         shedule = shedule_form.save()
+        meeting.shedule_set.add(shedule)
 
-        # meeting.shedules_meeting.add(shedule)
         messages.success(request, 'Pauta Adicionada Com Sucesso!')
         return redirect('meeting_show', pk=meeting.id)
 
@@ -34,6 +32,7 @@ def edit_shedule(request,pk_meeting,pk_shedule):
 
     shedule = Shedule.objects.get(id=pk_shedule)
     meeting = Meeting.objects.get(id=pk_meeting)
+    list_topics = meeting.topics_meeting.all()
 
     shedule_form = SheduleForm(request.POST or None, instance=shedule)
 
@@ -45,7 +44,19 @@ def edit_shedule(request,pk_meeting,pk_shedule):
         return redirect('meeting_show', pk = meeting.id)
 
     return render(request, 'shedules/edit_shedule.html', {'shedule': shedule,
-                                                          'meeting': meeting})
+                                                          'meeting': meeting,
+                                                          'list_topics': list_topics})
+
+@login_required
+def show_shedule(request,pk_meeting,pk_shedule):
+
+    shedule = get_object_or_404(Shedule,pk=pk_shedule)
+    meeting = Meeting.objects.get(pk=pk_meeting)
+    list_topics = meeting.topics_meeting.all()
+
+    return render(request, 'shedules/show_shedule.html', {'shedule': shedule,
+                                                          'meeting': meeting,
+                                                          'list_topics': list_topics})
 
 @login_required
 def delete_shedule(request,pk_meeting,pk_shedule):
@@ -60,5 +71,4 @@ def delete_shedule(request,pk_meeting,pk_shedule):
         messages.success(request, 'Pauta Excluída Com Sucesso!')
         return redirect('meeting_show', pk = meeting.id)
 
-    return render(request, 'shedules/delete_shedule.html', {'shedule': shedule,
-                                                            'meeting': meeting})
+    return render(request, 'shedules/delete_shedule.html', {'shedule': shedule})

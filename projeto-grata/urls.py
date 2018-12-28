@@ -40,6 +40,7 @@ urlpatterns = [
     path('nova_pauta/<int:pk>', shedules_views.new_shedule, name='shedule_new'),
     path('editar_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.edit_shedule, name='shedule_edit'),
     path('excluir_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.delete_shedule, name='shedule_delete'),
+    path('detalhes_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.show_shedule, name='shedule_show'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

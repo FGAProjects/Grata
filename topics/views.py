@@ -21,7 +21,7 @@ def new_topic(request,pk):
 
         meeting.topics_meeting.add(topic)
         messages.success(request, 'Tópico Adicionado Com Sucesso!')
-        return redirect('new_topic', pk = meeting.id)
+        return redirect('topic_new', pk=meeting.id)
 
     topic_form = TopicForm()
 
@@ -37,6 +37,6 @@ def delete_topic(request,pk,pk_meeting):
 
         topic.delete()
         messages.success(request, 'Tópico Excluído Com Sucesso!')
-        return redirect('new_topic', pk=meeting.id)
+        return redirect('topic_new', pk=meeting.id)
 
     return render(request, 'topics/delete_topic.html', {'topic': topic,'meeting':meeting})

@@ -69,17 +69,21 @@
 							<h4 align="center">Tópicos da Reunião</h4>
 
 							<thead>
+
 								<tr>
+
+									<th></th>
 									<th>Tópicos</th>
-									<th>Adicionar a Pauta</th>
 								</tr>
 							</thead>
 
 							<tbody>
+
 								{% for topic in list_topics %}
 								<tr>
+
+									<td></td>
 									<td>{{topic.topic_name}}</td>
-									<td>Adicionar Tópico a Pauta</td>
 								</tr>
 								{% endfor %}
 							</tbody>
@@ -87,9 +91,13 @@
 
 						<div class="row">
 	                        <div class="input-field col s5">
-		                        <button class="btn cyan waves-effect waves-light right" type="submit">Cadastrar
+		                        <button class="btn cyan waves-effect waves-light right" type="submit">Alterar
 			                       <i class="mdi-content-send right"></i>
 		                        </button>
+	                        </div>
+							<div class="input-field col s6">
+		                        <a href="{% url 'shedule_show' meeting.id shedule.id %}"
+                                   class="btn orange darken-1 waves-effect waves-light right">Cancelar</a>
 	                        </div>
 						</div>
     				</form>
