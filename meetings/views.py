@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from meetings.models import Meeting
+from shedules.models import Shedule
 from meetings.forms import MeetingForm,EditMeetingForm
 
 @login_required
@@ -29,9 +30,12 @@ def list_meeting(request):
 def show_meeting(request,pk):
 
     meeting = get_object_or_404(Meeting,pk=pk)
+    shedules = Shedule.objects.all()
     list_topics = meeting.topics_meeting.all()
 
-    return render(request, 'meetings/show_meeting.html',{'meeting':meeting,'list_topics':list_topics})
+    return render(request, 'meetings/show_meeting.html',{'meeting':meeting,
+                                                         'list_topics':list_topics,
+                                                         'shedules':shedules})
 
 @login_required
 def edit_meeting(request,pk):
@@ -56,24 +60,8 @@ def delete_meeting(request,pk):
     if request.method == 'POST':
 
         meeting.delete()
-        messages.success(request, 'Reunião Excluída Com Sucesso')
+
+        messages.success(request, 'Reunião Excluída Com Sucesso!')
         return redirect('meeting_list')
 
     return render(request, 'meetings/delete_meeting.html', {'meeting': meeting})
-
-# @login_required
-# def add_client_to_meeting(request,pk):
-#
-#     meeting = Meeting.objects.get(id=pk)
-#     client = User.objects.get(id=request.user.id)
-#
-#     meeting.clients.add(client)
-#
-#     return redirect('meeting_show')
-#
-#     # print(request.user.id)
-#     #
-#     # client = User.objects.get(id=request.user.id)
-#     # meeting.clients.add(client)
-
-

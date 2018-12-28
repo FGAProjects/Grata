@@ -33,11 +33,13 @@ urlpatterns = [
     path('excluir_reuniao/<int:pk>', meeting_views.delete_meeting, name='meeting_delete'),
 
     #Topic
-    path('novo_topico/<int:pk>', topics_views.new_topic, name='new_topic'),
-    path('excluir_topico/<int:pk>/<int:pk_meeting>', topics_views.delete_topic, name='delete_topic'),
+    path('novo_topico/<int:pk>', topics_views.new_topic, name='topic_new'),
+    path('excluir_topico/<int:pk>/<int:pk_meeting>', topics_views.delete_topic, name='topic_delete'),
 
     #Shedule
     path('nova_pauta/<int:pk>', shedules_views.new_shedule, name='shedule_new'),
+    path('editar_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.edit_shedule, name='shedule_edit'),
+    path('excluir_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.delete_shedule, name='shedule_delete'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

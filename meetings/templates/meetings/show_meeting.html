@@ -103,7 +103,7 @@
 			<thead>
 				<tr>
 					<th>
-						<a  href="{% url 'new_topic' meeting.id%}" class="waves-effect green darken-2 btn">
+						<a  href="{% url 'topic_new' meeting.id %}" class="waves-effect green darken-2 btn">
 							<i class="material-icons center">
 								add
 							</i>
@@ -136,7 +136,7 @@
 			<thead>
 				<tr>
 					<th>
-						<a  href="{% url 'shedule_new' meeting.id%}" class="waves-effect green darken-2 btn">
+						<a  href="{% url 'shedule_new' meeting.id %}" class="waves-effect green darken-2 btn">
 							<i class="material-icons center">
 								add
 							</i>
@@ -144,14 +144,27 @@
 						</a>
 					</th>
 					<th>Pauta</th>
+					<th>Editar</th>
+					<th>Excluir</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				{% for topic in list_topics %}
+				{% for shedule in shedules %}
 				<tr>
 					<td></td>
-					<td><li>{{topic.topic_name}}</li></td>
+					<td>{{shedule.introduction}}</td>
+					<td>
+						<a href="{% url 'shedule_edit' meeting.id shedule.id %}"
+		   					class="btn blue darken-4 waves-effect waves-light">
+							Editar
+						</a>
+					</td>
+					<td>
+						<a href="{% url 'shedule_delete' meeting.id shedule.id %}"
+		   					class="btn red accent-4 waves-effect waves-light">
+							Excluir
+						</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
