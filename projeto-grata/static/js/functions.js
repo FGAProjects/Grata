@@ -20,6 +20,22 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+});
+
+$('.dropdown-trigger').dropdown({
+      inDuration: 500,
+      outDuration: 1025,
+      constrain_width: false,
+      hover: true,
+      gutter: 0,
+      belowOrigin: false,
+    }
+);
+
 $('.datepicker').datepicker({
         i18n: {
             months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
