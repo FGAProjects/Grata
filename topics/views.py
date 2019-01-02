@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -10,16 +12,32 @@ from meetings.models import Meeting
 def new_topic(request,pk):
 
     topic_form = TopicForm(request.POST or None)
-
     meeting = get_object_or_404(Meeting, pk=pk)
-
     list_topics = meeting.topics_meeting.all()
 
     if topic_form.is_valid():
 
         topic = topic_form.save()
-
         meeting.topics_meeting.add(topic)
+
+        topic_data = []
+
+        for topic in list_topics:
+
+            with open('jsons/topic.json', 'w') as write_file:
+
+                topic_list = {
+
+                    'Topic_' + str(topic.id): {
+
+                        'topic_name': topic.topic_name
+                    }
+                }
+
+                topic_data.append(topic_list)
+
+                json.dump(topic_data, write_file)
+
         messages.success(request, 'Tópico Adicionado Com Sucesso!')
         return redirect('topic_new', pk=meeting.id)
 
@@ -28,6 +46,7 @@ def new_topic(request,pk):
     return render(request, 'topics/new_topic.html', {'form': topic_form, 'list_topics': list_topics,
                                                      'meeting': meeting})
 
+@login_required
 def delete_topic(request,pk,pk_meeting):
 
     topic = Topic.objects.get(id=pk)
@@ -36,6 +55,25 @@ def delete_topic(request,pk,pk_meeting):
     if request.method == 'POST':
 
         topic.delete()
+        list_topics = meeting.topics_meeting.all()
+        topic_data = []
+
+        for topic in list_topics:
+
+            with open('jsons/topic.json', 'w') as write_file:
+
+                topic_list = {
+
+                    'Topic_' + str(topic.id): {
+
+                        'topic_name': topic.topic_name
+                    }
+                }
+
+                topic_data.append(topic_list)
+
+                json.dump(topic_data, write_file)
+
         messages.success(request, 'Tópico Excluído Com Sucesso!')
         return redirect('topic_new', pk=meeting.id)
 

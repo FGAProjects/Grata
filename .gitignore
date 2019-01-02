@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+jsons/meeting.json
+jsons/shedule.json
+jsons/topic.json
+
 # Distribution / packaging
 .Python
 build/

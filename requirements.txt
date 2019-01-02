@@ -9,3 +9,4 @@ pytz
 python-decouple
 dj-static
 django-heroku
+reportlab

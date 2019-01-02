@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'topics',
     'shedules',
     'meetings',
+    'pdfs',
 ]
 
 MIDDLEWARE = [
