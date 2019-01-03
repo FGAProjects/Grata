@@ -1,4 +1,4 @@
-import json
+from utils.utils import meetings_json
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -15,30 +15,7 @@ def new_meeting(request):
     if meeting.is_valid():
 
         meeting.save()
-        meeting_list = Meeting.objects.all()
-        meeting_data = []
-
-        for meeting_datas in meeting_list:
-
-            with open('jsons/meeting.json', 'w') as write_file:
-
-                meeting_list = {
-
-                    'Meeting_' + str(meeting_datas.id): {
-                        'subject_matter': meeting_datas.subject_matter,
-                        'project': meeting_datas.project,
-                        'local': meeting_datas.local,
-                        'meeting_leader': meeting_datas.meeting_leader,
-                        'documentary': meeting_datas.documentary,
-                        'first_date': meeting_datas.first_date,
-                        'final_date': meeting_datas.final_date,
-                        'first_hour': meeting_datas.final_hour,
-                        'final_hour': meeting_datas.final_hour
-                    }
-                }
-
-                meeting_data.append(meeting_list)
-                json.dump(meeting_data, write_file)
+        meetings_json()
 
         messages.success(request,'Reunião Criada Com Sucesso!')
         return redirect('meeting_list')
@@ -72,30 +49,7 @@ def edit_meeting(request,pk):
     if meeting_form.is_valid():
 
         meeting = meeting_form.save()
-        meeting_list = Meeting.objects.all()
-        meeting_data = []
-
-        for meeting_datas in meeting_list:
-
-            with open('jsons/meeting.json', 'w') as write_file:
-
-                meeting_list = {
-
-                    'Meeting_' + str(meeting.id): {
-                        'subject_matter': meeting_datas.subject_matter,
-                        'project': meeting_datas.project,
-                        'local': meeting_datas.local,
-                        'meeting_leader': meeting_datas.meeting_leader,
-                        'documentary': meeting_datas.documentary,
-                        'first_date': meeting_datas.first_date,
-                        'final_date': meeting_datas.final_date,
-                        'first_hour': meeting_datas.final_hour,
-                        'final_hour': meeting_datas.final_hour
-                    }
-                }
-
-                meeting_data.append(meeting_list)
-                json.dump(meeting_data, write_file)
+        meetings_json()
 
         messages.success(request, 'Informações da Reunião Foram Alteradas Com Sucesso!')
         return redirect('meeting_show', pk=meeting.id)
@@ -110,30 +64,7 @@ def delete_meeting(request,pk):
     if request.method == 'POST':
 
         meeting.delete()
-        meeting_list = Meeting.objects.all()
-        meeting_data = []
-
-        for meeting_datas in meeting_list:
-
-            with open('jsons/meeting.json', 'w') as write_file:
-
-                meeting_list = {
-
-                    'Meeting_' + str(meeting.id): {
-                        'subject_matter': meeting_datas.subject_matter,
-                        'project': meeting_datas.project,
-                        'local': meeting_datas.local,
-                        'meeting_leader': meeting_datas.meeting_leader,
-                        'documentary': meeting_datas.documentary,
-                        'first_date': meeting_datas.first_date,
-                        'final_date': meeting_datas.final_date,
-                        'first_hour': meeting_datas.final_hour,
-                        'final_hour': meeting_datas.final_hour
-                    }
-                }
-
-                meeting_data.append(meeting_list)
-                json.dump(meeting_data, write_file)
+        meetings_json()
 
         messages.success(request, 'Reunião Excluída Com Sucesso!')
         return redirect('meeting_list')

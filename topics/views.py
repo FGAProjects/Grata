@@ -1,5 +1,7 @@
 import json
 
+from utils.utils import topics_json
+
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -19,24 +21,7 @@ def new_topic(request,pk):
 
         topic = topic_form.save()
         meeting.topics_meeting.add(topic)
-
-        topic_data = []
-
-        for topic in list_topics:
-
-            with open('jsons/topic.json', 'w') as write_file:
-
-                topic_list = {
-
-                    'Topic_' + str(topic.id): {
-
-                        'topic_name': topic.topic_name
-                    }
-                }
-
-                topic_data.append(topic_list)
-
-                json.dump(topic_data, write_file)
+        topics_json(pk)
 
         messages.success(request, 'Tópico Adicionado Com Sucesso!')
         return redirect('topic_new', pk=meeting.id)
@@ -55,24 +40,7 @@ def delete_topic(request,pk,pk_meeting):
     if request.method == 'POST':
 
         topic.delete()
-        list_topics = meeting.topics_meeting.all()
-        topic_data = []
-
-        for topic in list_topics:
-
-            with open('jsons/topic.json', 'w') as write_file:
-
-                topic_list = {
-
-                    'Topic_' + str(topic.id): {
-
-                        'topic_name': topic.topic_name
-                    }
-                }
-
-                topic_data.append(topic_list)
-
-                json.dump(topic_data, write_file)
+        topics_json(pk_meeting)
 
         messages.success(request, 'Tópico Excluído Com Sucesso!')
         return redirect('topic_new', pk=meeting.id)
