@@ -12,7 +12,7 @@ def new_client(request):
 
     list_sectors = Setores.list_sectors()
 
-    if request.method == "POST":
+    if request.method == 'POST':
 
         form = ClientSignUp(request.POST)
 

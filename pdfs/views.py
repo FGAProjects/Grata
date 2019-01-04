@@ -1,5 +1,6 @@
 import json
 
+from utils.utils import list_shedules
 from django.shortcuts import render
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter,landscape
@@ -11,9 +12,17 @@ def pdf_file(request,pk):
 
     meeting = Meeting.objects.get(id=pk)
 
-    with open("jsons/shedule.json", "r") as read_file:
-        data = json.load(read_file)
+    shedules = list_shedules()
+    print(type(shedules))
+    print(len((shedules)))
 
-    print(data)
+    # shedules_list = {}
+    #
+    # for aux in range(len(list_shedules)):
+    #     introduction = \
+    #         list_shedules[aux].get('Shedules').get('introduction')
 
-    return render(request, 'pdfs/show_pdf.html',{'meeting': meeting, 'data':data})
+    for aux in range(len(shedules)):
+        x = shedules.get('introduction')
+        print(x)
+    return render(request, 'pdfs/show_pdf.html',{'meeting': meeting,'shedules':shedules})

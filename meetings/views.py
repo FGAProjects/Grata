@@ -1,5 +1,3 @@
-from utils.utils import meetings_json
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -15,7 +13,6 @@ def new_meeting(request):
     if meeting.is_valid():
 
         meeting.save()
-        meetings_json()
 
         messages.success(request,'Reunião Criada Com Sucesso!')
         return redirect('meeting_list')
@@ -49,7 +46,6 @@ def edit_meeting(request,pk):
     if meeting_form.is_valid():
 
         meeting = meeting_form.save()
-        meetings_json()
 
         messages.success(request, 'Informações da Reunião Foram Alteradas Com Sucesso!')
         return redirect('meeting_show', pk=meeting.id)
@@ -64,7 +60,6 @@ def delete_meeting(request,pk):
     if request.method == 'POST':
 
         meeting.delete()
-        meetings_json()
 
         messages.success(request, 'Reunião Excluída Com Sucesso!')
         return redirect('meeting_list')
