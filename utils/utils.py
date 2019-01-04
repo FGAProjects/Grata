@@ -49,27 +49,30 @@ def topics_json(pk):
 
 def list_shedules():
 
-    shedules_json = open('jsons/shedule.json', 'r')
-    list_shedules = json.load(shedules_json)
-    shedules_json.close()
+    with open('jsons/shedule.json', 'r') as read_file:
 
-    shedules_list = {}
+        list_shedules = json.load(read_file)
 
-    for aux in range(len(list_shedules)):
+        shedule = Shedule()
+        shedules_list = []
 
-        introduction = \
-            list_shedules[aux].get('Shedules').get('introduction')
-        review_of_the_management_perspective = \
-            list_shedules[aux].get('Shedules').get('review_of_the_management_perspective')
-        vision_of_the_area_of_informativa = \
-            list_shedules[aux].get('Shedules').get('vision_of_the_area_of_informativa')
-        rules_of_conduct = \
-            list_shedules[aux].get('Shedules').get('rules_of_conduct')
+        for aux in range(len(list_shedules)):
 
+            shedule.introduction = \
+                list_shedules[aux].get('Shedules').get('introduction')
 
-        shedules_list['introduction'] = introduction
-        shedules_list['review_of_the_management_perspective'] = review_of_the_management_perspective
-        shedules_list['vision_of_the_area_of_informativa'] = vision_of_the_area_of_informativa
-        shedules_list['rules_of_conduct'] = rules_of_conduct
+            shedule.review_of_the_management_perspective = \
+                list_shedules[aux].get('Shedules').get('review_of_the_management_perspective')
 
+            shedule.vision_of_the_area_of_informativa = \
+                list_shedules[aux].get('Shedules').get('vision_of_the_area_of_informativa')
+
+            shedule.rules_of_conduct = \
+                list_shedules[aux].get('Shedules').get('rules_of_conduct')
+
+            shedules_list.append(Shedule('',
+                                         shedule.introduction,
+                                         shedule.review_of_the_management_perspective,
+                                         shedule.vision_of_the_area_of_informativa,
+                                         shedule.rules_of_conduct))
     return shedules_list
