@@ -41,7 +41,8 @@ def new_client(request):
 
         form = ClientSignUp()
 
-    return render(request, 'clients/new_clients.html', {'form': form, 'sectors': list_sectors})
+    return render(request, 'clients/new_clients.html', {'form': form,
+                                                        'sectors': list_sectors})
 
 @login_required
 def client_show(request):
@@ -77,7 +78,8 @@ def client_update(request):
 
         form = EditClientForm(request.POST,instance=request.user)
 
-    return render(request,'clients/edit_clients.html',{'sectors':list_sectors,'form':form})
+    return render(request,'clients/edit_clients.html',{'sectors':list_sectors,
+                                                       'form':form})
 
 @login_required
 def client_delete(request):
@@ -98,4 +100,5 @@ def list_users(request,pk):
     client = User.objects.all()
     meeting = Meeting.objects.get(id=pk)
 
-    return render(request, 'clients/list_clients.html',{'clients':client,'meeting':meeting})
+    return render(request, 'clients/list_clients.html',{'clients':client,
+                                                        'meeting':meeting})

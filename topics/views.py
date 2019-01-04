@@ -28,7 +28,8 @@ def new_topic(request,pk):
 
     topic_form = TopicForm()
 
-    return render(request, 'topics/new_topic.html', {'form': topic_form, 'list_topics': list_topics,
+    return render(request, 'topics/new_topic.html', {'form': topic_form,
+                                                     'list_topics': list_topics,
                                                      'meeting': meeting})
 
 @login_required
@@ -45,4 +46,5 @@ def delete_topic(request,pk,pk_meeting):
         messages.success(request, 'Tópico Excluído Com Sucesso!')
         return redirect('topic_new', pk=meeting.id)
 
-    return render(request, 'topics/delete_topic.html', {'topic': topic,'meeting':meeting})
+    return render(request, 'topics/delete_topic.html', {'topic': topic,
+                                                        'meeting':meeting})

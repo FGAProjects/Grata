@@ -7,10 +7,15 @@
 <h2>{{data}}</h2>
 
 {% for shedule in shedules %}
-<h2>Introdução:  {{shedule.introduction}}</h2>
-<h2>Revisão:  {{shedule.review_of_the_management_perspective}}</h2>
-<h2>Visão:  {{shedule.vision_of_the_area_of_informativa}}</h2>
-<h2>Regras: {{shedule.rules_of_conduct}}</h2>
+
+	<h4>Introdução:  {{shedule.introduction}}</h4>
+	<h4>Revisão:  {{shedule.review_of_the_management_perspective}}</h4>
+	<h4>Visão:  {{shedule.vision_of_the_area_of_informativa}}</h4>
+	<h4>Regras: {{shedule.rules_of_conduct}}</h4>
 {% endfor %}
 
+{% for topic in topics %}
+
+	<h4>Nome Tópico: {{topic.topic_name}}</h4>
+{% endfor %}
 {% endblock content %}

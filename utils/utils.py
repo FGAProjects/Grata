@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 
 from meetings.models import Meeting
 from shedules.models import Shedule
+from topics.models import Topic
 
 def shedules_json(pk):
 
@@ -39,8 +40,9 @@ def topics_json(pk):
         with open('jsons/topic.json', 'w') as write_file:
 
             topic_list = {
-
-                'topic_name': topic.topic_name
+                'Topics' : {
+                    'topic_name': topic.topic_name
+                }
             }
 
             topic_data.append(topic_list)
@@ -49,30 +51,50 @@ def topics_json(pk):
 
 def list_shedules():
 
-    with open('jsons/shedule.json', 'r') as read_file:
+    shedules = open('jsons/shedule.json', 'r')
+    read_shedules = json.load(shedules)
+    shedules.close()
+    list_shedules = read_shedules
+    shedule = Shedule()
+    shedules_list = []
 
-        list_shedules = json.load(read_file)
+    for aux in range(len(list_shedules)):
 
-        shedule = Shedule()
-        shedules_list = []
+        shedule.introduction = \
+            list_shedules[aux].get('Shedules').get('introduction')
 
-        for aux in range(len(list_shedules)):
+        shedule.review_of_the_management_perspective = \
+            list_shedules[aux].get('Shedules').get('review_of_the_management_perspective')
 
-            shedule.introduction = \
-                list_shedules[aux].get('Shedules').get('introduction')
+        shedule.vision_of_the_area_of_informativa = \
+            list_shedules[aux].get('Shedules').get('vision_of_the_area_of_informativa')
 
-            shedule.review_of_the_management_perspective = \
-                list_shedules[aux].get('Shedules').get('review_of_the_management_perspective')
+        shedule.rules_of_conduct = \
+            list_shedules[aux].get('Shedules').get('rules_of_conduct')
 
-            shedule.vision_of_the_area_of_informativa = \
-                list_shedules[aux].get('Shedules').get('vision_of_the_area_of_informativa')
+        shedules_list.append(Shedule('',
+                                     shedule.introduction,
+                                     shedule.review_of_the_management_perspective,
+                                     shedule.vision_of_the_area_of_informativa,
+                                     shedule.rules_of_conduct))
 
-            shedule.rules_of_conduct = \
-                list_shedules[aux].get('Shedules').get('rules_of_conduct')
-
-            shedules_list.append(Shedule('',
-                                         shedule.introduction,
-                                         shedule.review_of_the_management_perspective,
-                                         shedule.vision_of_the_area_of_informativa,
-                                         shedule.rules_of_conduct))
     return shedules_list
+
+def list_topics():
+
+    topics = open('jsons/topic.json', 'r')
+    read_topics = json.load(topics)
+    topics.close()
+    list_topics = read_topics
+    topic = Topic()
+    topics_list = []
+
+    for aux in range(len(list_topics)):
+
+        topic.topic_name = \
+            list_topics[aux].get('Topics').get('topic_name')
+
+        topics_list.append(Topic('',
+                                     topic.topic_name))
+
+    return topics_list
