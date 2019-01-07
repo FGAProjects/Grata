@@ -9,6 +9,7 @@ from meetings import views as meeting_views
 from topics import views as topics_views
 from shedules import views as shedules_views
 from pdfs import views as pdfs_views
+from pdfs.views import PDF
 
 urlpatterns = [
 
@@ -44,7 +45,7 @@ urlpatterns = [
     path('detalhes_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.show_shedule, name='shedule_show'),
 
     #PDF
-    path('pdf/<int:pk>', pdfs_views.pdf_file, name='pdf_show'),
+    path('pdf/<int:pk>', PDF.as_view(), name='pdf_show'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

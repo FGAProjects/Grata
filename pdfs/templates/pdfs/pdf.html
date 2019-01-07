@@ -1,0 +1,23 @@
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="border">
+
+<h1>{{meeting.final_hour}}</h1>
+
+{% for shedule in shedules %}
+
+	<h4>Introdução:  {{shedule.introduction}}</h4>
+	<h4>Revisão:  {{shedule.review_of_the_management_perspective}}</h4>
+	<h4>Visão:  {{shedule.vision_of_the_area_of_informativa}}</h4>
+	<h4>Regras: {{shedule.rules_of_conduct}}</h4>
+{% endfor %}
+
+{% for topic in topics %}
+
+	<h4>Nome Tópico: {{topic.topic_name}}</h4>
+{% endfor %}
+
+	</div>
+{% endblock content %}
