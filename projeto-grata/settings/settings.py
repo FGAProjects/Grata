@@ -21,7 +21,6 @@ INSTALLED_APPS = [
     'shedules',
     'meetings',
     'pdfs',
-    'utils',
 ]
 
 MIDDLEWARE = [
