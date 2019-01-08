@@ -8,8 +8,8 @@ from clients import views as client_views
 from meetings import views as meeting_views
 from topics import views as topics_views
 from shedules import views as shedules_views
-from pdfs import views as pdfs_views
 from pdfs.views import PDF
+from questionnaires import views as questionnaires_views
 
 urlpatterns = [
 
@@ -43,6 +43,11 @@ urlpatterns = [
     path('editar_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.edit_shedule, name='shedule_edit'),
     path('excluir_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.delete_shedule, name='shedule_delete'),
     path('detalhes_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.show_shedule, name='shedule_show'),
+
+    #Quiz
+    path('nova_pergunta/<int:pk>', questionnaires_views.new_quiz, name='quiz_new'),
+    path('editar_pergunta/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.edit_quiz, name='quiz_edit'),
+    path('excluir_pergunta/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.delete_quiz, name='quiz_delete'),
 
     #PDF
     path('pdf/<int:pk>', PDF.as_view(), name='pdf_show'),

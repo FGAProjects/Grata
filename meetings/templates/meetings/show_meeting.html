@@ -172,5 +172,52 @@
 			</tbody>
 		</table>
 	</div>
+
+	<div class="container">
+
+		<table class="centered responsive-table highlight">
+
+			<h4 align="center">Questionário de Avaliação</h4>
+
+			<thead>
+				<tr>
+					<th>
+						<a  href="{% url 'quiz_new' meeting.id %}" class="waves-effect green darken-2 btn">
+							<i class="material-icons center">
+								add
+							</i>
+							Pergunta
+						</a>
+					</th>
+					<th>N°</th>
+					<th>Perguntas</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				{% for question in questions %}
+
+				<tr>
+
+					<td></td>
+					<td>{{question.id}}</td>
+					<td>{{question.question}}</td>
+					<td>
+						<a href="{% url 'quiz_edit' meeting.id question.id %}">
+							<i class="mdi-communication-call prefix"></i>
+							<i class="small material-icons">edit</i>
+						</a>
+						<a href="{% url 'quiz_delete' meeting.id question.id %}">
+							<i class="mdi-communication-call prefix"></i>
+							<i class="small material-icons">delete</i>
+						</a>
+					</td>
+
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endif %}
 {% endblock content %}

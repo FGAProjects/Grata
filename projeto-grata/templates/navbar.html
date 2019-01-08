@@ -95,6 +95,64 @@
                     </a>
                 </li>
             </ul>
+
+            <ul class="sidenav" id="mobile-nav">
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            notifications
+                        </i><b>NOTIFICAÇÕES</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'meeting_list' %}">
+                        <i class="material-icons left">
+                            people
+                        </i><b>REUNIÕES</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            local_library
+                        </i><b>MÉTODO JAD</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            view_list
+                        </i><b>RELATÓRIOS</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            help_outline
+                        </i><b>AJUDA</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'client_show' %}">
+                        <i class="material-icons left">
+                            contacts
+                        </i><b>CONTA</b>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="material-icons left">
+                            exit_to_app
+                        </i><b>SAIR</b>
+                    </a>
+                </li>
+            </ul>
         {% else %}
             <a href="/" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
         {% endif %}

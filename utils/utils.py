@@ -52,4 +52,3 @@ def list_topics():
                                      topic.topic_name))
 
     return topics_list
-

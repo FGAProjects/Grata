@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+
+    Você quer realmente deletar o "{{ quiz.question }}" ?
+
+    <h2>Pergunta</h2>
+
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock content %}

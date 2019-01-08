@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'meetings',
     'pdfs',
     'utils',
+    'questionnaires',
 ]
 
 MIDDLEWARE = [

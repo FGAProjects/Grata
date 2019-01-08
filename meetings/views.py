@@ -32,10 +32,12 @@ def show_meeting(request,pk):
     meeting = get_object_or_404(Meeting,pk=pk)
     shedules = meeting.shedule_set.all()
     list_topics = meeting.topics_meeting.all()
+    list_questions = meeting.questionnaires_meeting.all()
 
-    return render(request, 'meetings/show_meeting.html',{'meeting':meeting,
-                                                         'list_topics':list_topics,
-                                                         'shedules':shedules})
+    return render(request, 'meetings/show_meeting.html',{'meeting': meeting,
+                                                         'list_topics': list_topics,
+                                                         'shedules': shedules,
+                                                         'questions': list_questions})
 
 @login_required
 def edit_meeting(request,pk):

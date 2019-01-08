@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from topics.models import Topic
+from questionnaires.models import Quiz
 
 class Meeting(models.Model):
 
@@ -17,6 +18,7 @@ class Meeting(models.Model):
     final_hour = models.CharField(max_length=10)
 
     topics_meeting = models.ManyToManyField(Topic)
+    questionnaires_meeting = models.ManyToManyField(Quiz)
 
     def __str__(self):
 
