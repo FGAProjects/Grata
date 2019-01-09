@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+
+	<br>
+	<a href="{% url 'meeting_show' meeting.id %}"
+	   class="btn green darken-4 waves-effect waves-light right">Voltar</a>
+	<a href="{% url 'quiz_delete' meeting.id quiz.id %}"
+	   class="btn red accent-4 waves-effect waves-light right">Excluir Questionário</a>
+	<a href="{% url 'quiz_edit' meeting.id quiz.id %}"
+	   class="btn blue darken-4 waves-effect waves-light right">Editar Questionário</a>
+</div>
+
+<div class="container">
+
+		<table class="centered responsive-table highlight">
+
+			<h4 align="center">Questionário de Avaliação</h4>
+
+			<thead>
+				<tr>
+					<th>N°</th>
+					<th>Perguntas</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				{% for questionnaire in questionnaires %}
+
+				<tr>
+
+					<td>{{questionnaire.id}}</td>
+					<td>{{questionnaire.description}}</td>
+
+
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock content %}

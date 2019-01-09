@@ -191,15 +191,26 @@
 							Adicionar Questionário
 						</a>
 					</th>
-					<th>N°</th>
 					<th>Descrição</th>
+					<th>Visualizar</th>
 				</tr>
 			</thead>
 
 			<tbody>
 
-				<td>1</td>
-				<td>MAS</td>
+				{% for questionnaire in questionnaires %}
+
+					<tr>
+
+						<td></td>
+						<td>{{questionnaire.description}}</td>
+						<td>
+							<a href="{% url 'quiz_show' meeting.id questionnaire.id %}">
+							Ver Relatório
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</div>

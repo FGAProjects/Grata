@@ -46,13 +46,14 @@ urlpatterns = [
     path('detalhes_pauta/<int:pk_meeting>/<int:pk_shedule>', shedules_views.show_shedule, name='shedule_show'),
 
     #Quiz
-    path('nova_pergunta/<int:pk>', questionnaires_views.new_quiz, name='quiz_new'),
-    path('excluir_pergunta/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.delete_quiz, name='quiz_delete'),
-    # path('editar_pergunta/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.edit_quiz, name='quiz_edit'),
-    # path('questionario/<int:pk>', answers_views.list_quiz, name='quiz_list'),
+    path('novo_questionario/<int:pk>', questionnaires_views.new_quiz, name='quiz_new'),
+    path('editar_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.edit_quiz, name='quiz_edit'),
+    path('ver_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.show_quiz, name='quiz_show'),
+    path('excluir_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.delete_quiz, name='quiz_delete'),
 
     #PDF
     path('pdf/<int:pk>', PDF.as_view(), name='pdf_show'),
 ]
+
 
 urlpatterns += staticfiles_urlpatterns()

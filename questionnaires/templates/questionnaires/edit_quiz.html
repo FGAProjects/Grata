@@ -3,44 +3,4 @@
 
 {% block content %}
 
-<div class="container" style="width:720px">
-
-    <form method="post" class="form-horizontal" role="form">{% csrf_token %}
-
-		<h2 align="center">Editar Pergunta</h2>
-
-		<div class="form-group">
-			<form name="add_name" id="add_name">
-
-				<div class="table-responsive">
-					<table class="table table-bordered" id="dynamic_field">
-						<tr>
-							<td>
-								<div class="input-field col s4">
-									<i class="mdi-communication-call prefix"></i>
-									<i class="small material-icons">question_answer</i>
-									<input name="question" type="text" class="validate"
-										   required id="id_question" maxlength="50" value="{{quiz.question}}">
-									<label for="id_question">Pergunta</label>
-								</div>
-							</td>
-							<td>
-								<button type="submit" name="add" id="add"
-										class="waves-effect blue darken-4 btn">
-									Alterar
-								</button>
-							</td>
-							<td>
-								<a href="{% url 'quiz_new' meeting.id %}"
-				   					class="btn green darken-4 waves-effect waves-light right">
-									Voltar
-								</a>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</form>
-		</div>
-	</form>
-</div>
 {% endblock content %}
