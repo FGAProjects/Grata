@@ -1,6 +1,9 @@
 from django.db import models
 
+from meetings.models import Meeting
+
 class Quiz(models.Model):
 
-    question = models.CharField(max_length=50)
-    answer = models.CharField(max_length=4, null=True)
+    description = models.CharField(max_length=10,blank=True)
+
+    questionnaires_meeting = models.ForeignKey(Meeting, null=True, blank=True, on_delete=models.CASCADE)

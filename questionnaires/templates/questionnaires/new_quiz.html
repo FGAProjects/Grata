@@ -61,25 +61,7 @@
 
 		<tbody>
 
-			{% for question in questions %}
 
-				<tr>
-
-					<td>{{question.id}}</td>
-					<td>{{question.question}}</td>
-					<td>
-						<a href="{% url 'quiz_edit' meeting.id question.id %}">
-							<i class="mdi-communication-call prefix"></i>
-							<i class="small material-icons">edit</i>
-						</a>
-						<a href="{% url 'quiz_delete' meeting.id question.id %}">
-							<i class="mdi-communication-call prefix"></i>
-							<i class="small material-icons">delete</i>
-						</a>
-					</td>
-
-			{% endfor %}
-				</tr>
 		</tbody>
 	</table>
 </div>
