@@ -33,34 +33,38 @@ def show_question(request,pk_meeting,pk_quiz):
                                                         'quiz': quiz,
                                                         'all_questions': all_questions})
 
-"""
 @login_required
-def edit_quiz(request, pk_meeting, pk_quiz):
-    quiz = Quiz.objects.get(id=pk_quiz)
-    quiz_form = QuestionnairesForm(request.POST or None, instance=quiz)
-    meeting = get_object_or_404(Meeting, pk=pk_meeting)
+def edit_question(request,pk_question,pk_meeting,pk_quiz):
 
-    if quiz_form.is_valid():
-        quiz_form.save()
+    question = get_object_or_404(Question, pk=pk_question)
+    question_form = QuestionForm(request.POST or None,instance=question)
+    meeting = get_object_or_404(Meeting, pk=pk_meeting)
+    quiz = get_object_or_404(Quiz, pk=pk_quiz)
+
+    if question_form.is_valid():
+
+        question_form.save()
 
         messages.success(request, 'Informações da Pergunta Alterada Com Sucesso!')
-        return redirect('quiz_new', pk=meeting.id)
+        return redirect('/ver_questionario/' + str(meeting.id) + '/' + str(quiz.id))
 
-    return render(request, 'questionnaires/edit_question.html', {'quiz': quiz,
-                                                             'meeting': meeting})
-
+    return render(request, 'questions/edit_question.html', {'question': question,
+                                                            'meeting' : meeting,
+                                                            'quiz': quiz})
 
 @login_required
-def delete_quiz(request, pk_meeting, pk_quiz):
-    quiz = Quiz.objects.get(id=pk_quiz)
+def delete_question(request,pk_question,pk_meeting,pk_quiz):
+
+    question = get_object_or_404(Question, pk=pk_question)
     meeting = get_object_or_404(Meeting, pk=pk_meeting)
+    quiz = get_object_or_404(Quiz, pk=pk_quiz)
 
     if request.method == 'POST':
-        quiz.delete()
 
+        question.delete()
         messages.success(request, 'Pergunta Excluída Com Sucesso!')
-        return redirect('quiz_new', pk=meeting.id)
+        return redirect('/ver_questionario/' + str(meeting.id) + '/' + str(quiz.id))
 
-    return render(request, 'questionnaires/delete_question.html', {'quiz': quiz,
-                                                               'meeting': meeting})
-"""
+    return render(request, 'questions/delete_question.html', {'question': question,
+                                                            'meeting': meeting,
+                                                            'quiz': quiz})

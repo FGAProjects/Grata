@@ -20,7 +20,7 @@
 									<i class="mdi-communication-call prefix"></i>
 									<i class="small material-icons">question_answer</i>
 									<input name="question" type="text" class="validate"
-										   required id="id_question" maxlength="50" value="{{quiz.question}}">
+										   required id="id_question" maxlength="50" value="{{question.question}}">
 									<label for="id_question">Pergunta</label>
 								</div>
 							</td>
@@ -31,7 +31,7 @@
 								</button>
 							</td>
 							<td>
-								<a href="{% url 'quiz_new' meeting.id %}"
+								<a href="{% url 'quiz_show' meeting.id quiz.id %}"
 				   					class="btn green darken-4 waves-effect waves-light right">
 									Voltar
 								</a>

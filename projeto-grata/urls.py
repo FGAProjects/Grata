@@ -48,11 +48,15 @@ urlpatterns = [
     #Quiz
     path('novo_questionario/<int:pk>', questionnaires_views.new_quiz, name='quiz_new'),
     path('editar_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.edit_quiz, name='quiz_edit'),
-
     path('excluir_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.delete_quiz, name='quiz_delete'),
 
     #Question
     path('ver_questionario/<int:pk_meeting>/<int:pk_quiz>', question_views.show_question, name='quiz_show'),
+    path('editar_pergunta/<int:pk_question>/<int:pk_meeting>/<int:pk_quiz>', question_views.edit_question,
+         name='question_edit'),
+    path('deletar_pergunta/<int:pk_question>/<int:pk_meeting>/<int:pk_quiz>', question_views.delete_question,
+         name='question_delete'),
+
 
     #PDF
     path('pdf/<int:pk>', PDF.as_view(), name='pdf_show'),
