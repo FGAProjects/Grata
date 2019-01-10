@@ -205,8 +205,9 @@
 						<td></td>
 						<td>{{questionnaire.description}}</td>
 						<td>
-							<a href="{% url 'quiz_show' meeting.id questionnaire.id %}">
-							Ver Relatório
+							<a  href="{% url 'quiz_show' meeting.id questionnaire.id %}"
+								class="waves-effect green darken-2 btn">
+								Ver Relatório
 							</a>
 						</td>
 					</tr>
@@ -232,12 +233,21 @@
 
 		<tbody>
 
-			<td>
+		<tbody>
 
-				<a href="{% url 'quiz_list' meeting.id %}">
-					Ver Relatório
-				</a>
-			</td>
+			{% for questionnaire in questionnaires %}
+
+				<tr>
+
+					<td></td>
+					<td>{{questionnaire.description}}</td>
+					<td>
+						<a href="{% url 'quiz_show' meeting.id questionnaire.id %}">
+							Ver Relatório
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
 		</tbody>
 	</table>
 </div>

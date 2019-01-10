@@ -10,7 +10,7 @@ from topics import views as topics_views
 from shedules import views as shedules_views
 from pdfs.views import PDF
 from questionnaires import views as questionnaires_views
-from answers import views as answers_views
+from questions import views as question_views
 
 urlpatterns = [
 
@@ -48,8 +48,11 @@ urlpatterns = [
     #Quiz
     path('novo_questionario/<int:pk>', questionnaires_views.new_quiz, name='quiz_new'),
     path('editar_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.edit_quiz, name='quiz_edit'),
-    path('ver_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.show_quiz, name='quiz_show'),
+
     path('excluir_questionario/<int:pk_meeting>/<int:pk_quiz>', questionnaires_views.delete_quiz, name='quiz_delete'),
+
+    #Question
+    path('ver_questionario/<int:pk_meeting>/<int:pk_quiz>', question_views.show_question, name='quiz_show'),
 
     #PDF
     path('pdf/<int:pk>', PDF.as_view(), name='pdf_show'),

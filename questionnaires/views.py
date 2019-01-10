@@ -12,12 +12,11 @@ def new_quiz(request,pk):
 
     quiz_form = QuestionnairesForm(request.POST or None)
     meeting = get_object_or_404(Meeting, pk=pk)
-    print('ANTES DO FORM IS VALID')
+
     if quiz_form.is_valid():
 
         quiz = quiz_form.save()
         meeting.quiz_set.add(quiz)
-        print('DEPOIS DO FORM SAVE')
 
         messages.success(request, 'Questionário Adicionado Com Sucesso!')
         return redirect('meeting_show', pk=meeting.id)
@@ -38,22 +37,11 @@ def edit_quiz(request,pk_meeting,pk_quiz):
 
         quiz_form.save()
 
-        messages.success(request, 'Informações da Pergunta Alterada Com Sucesso!')
-        return redirect('quiz_new', pk=meeting.id)
+        messages.success(request, 'Informações do Questionário Alteradas Com Sucesso!')
+        return redirect('/ver_questionario/' + str(meeting.id) + '/' + str(quiz.id))
 
     return render(request, 'questionnaires/edit_quiz.html', {'quiz': quiz,
                                                             'meeting': meeting})
-
-@login_required
-def show_quiz(request,pk_meeting,pk_quiz):
-
-    meeting = get_object_or_404(Meeting, pk=pk_meeting)
-    quiz = Quiz.objects.get(id=pk_quiz)
-    questionnaires = meeting.quiz_set.all()
-
-    return render(request, 'questionnaires/show_quiz.html', {'quiz': quiz,
-                                                             'meeting': meeting,
-                                                             'questionnaires': questionnaires})
 
 @login_required
 def delete_quiz(request,pk_meeting,pk_quiz):
