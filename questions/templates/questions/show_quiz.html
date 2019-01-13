@@ -58,6 +58,7 @@
 		<thead>
 
 			<tr>
+
 				<th>N°</th>
 				<th>Perguntas</th>
 				<th>Ações</th>
@@ -66,45 +67,6 @@
 
 		<tbody>
 			{% for question in list_questions %}
-				<tr>
-
-					<td>{{question.id}}</td>
-					<td>{{question.question}}</td>
-					<td>
-						<a href="{% url 'question_edit' question.id meeting.id quiz.id %}">
-							<i class="mdi-communication-call prefix"></i>
-							<i class="small material-icons">edit</i>
-						</a>
-						<a href="{% url 'question_delete' question.id meeting.id quiz.id %}">
-							<i class="mdi-communication-call prefix"></i>
-							<i class="small material-icons">delete</i>
-						</a>
-					</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</div>
-
-
-
-<div class="container">
-
-	<table class="centered responsive-table highlight">
-
-		<h4 align="center">Todas as Perguntas Já Cadastradas</h4>
-
-		<thead>
-
-			<tr>
-				<th>N°</th>
-				<th>Perguntas</th>
-				<th>Ações</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			{% for question in all_questions %}
 				<tr>
 
 					<td>{{question.id}}</td>

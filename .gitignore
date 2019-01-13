@@ -32,6 +32,7 @@ var/
 */migrations/*_initial.py
 */migrations/000*_*_*_*.py
 */migrations/*_auto_*.py
+*/migrations/000*_*_*.py
 wheels/
 *.egg-info/
 .installed.cfg

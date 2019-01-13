@@ -228,6 +228,7 @@
 			<tr>
 
 				<th>Descrição</th>
+				<th>Visualizar</th>
 			</tr>
 		</thead>
 
@@ -239,10 +240,9 @@
 
 				<tr>
 
-					<td></td>
 					<td>{{questionnaire.description}}</td>
 					<td>
-						<a href="{% url 'quiz_show' meeting.id questionnaire.id %}">
+						<a href="{% url 'answer_show' meeting.id questionnaire.id %}">
 							Ver Relatório
 						</a>
 					</td>

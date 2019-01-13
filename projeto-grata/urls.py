@@ -56,7 +56,7 @@ urlpatterns = [
          name='question_edit'),
     path('deletar_pergunta/<int:pk_question>/<int:pk_meeting>/<int:pk_quiz>', question_views.delete_question,
          name='question_delete'),
-
+    path('visualizar_questionario/<int:pk_meeting>/<int:pk_quiz>', question_views.list_quiz, name='answer_show'),
 
     #PDF
     path('pdf/<int:pk>', PDF.as_view(), name='pdf_show'),

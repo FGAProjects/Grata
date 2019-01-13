@@ -6,7 +6,7 @@ from django.contrib import messages
 from meetings.models import Meeting
 from questionnaires.models import Quiz
 from questions.models import Question
-from questions.forms import QuestionForm
+from questions.forms import QuestionForm,QuestionCompleteForm
 
 @login_required
 def show_question(request,pk_meeting,pk_quiz):
@@ -68,3 +68,33 @@ def delete_question(request,pk_question,pk_meeting,pk_quiz):
     return render(request, 'questions/delete_question.html', {'question': question,
                                                             'meeting': meeting,
                                                             'quiz': quiz})
+
+@login_required
+def list_quiz(request,pk_meeting,pk_quiz):
+
+    question_form = QuestionCompleteForm(request.POST or None)
+    meeting = get_object_or_404(Meeting, pk=pk_meeting)
+    quiz = get_object_or_404(Quiz, pk=pk_quiz)
+    list_questions = quiz.question_questionnaires.all()
+    list_option = {
+        'SIM',
+        'NÃO',
+    }
+
+    if question_form.is_valid():
+
+        question_form.save()
+        print(question_form.cleaned_data.get('answer'))
+
+        messages.success(request, 'Questionário Respondido Com Sucesso!')
+        return redirect('meeting_show', pk=meeting.id)
+
+    question_form = QuestionCompleteForm()
+
+
+    return render(request, 'questions/answer_list.html', {'form': question_form,
+                                                          'questions': list_questions,
+                                                          'options': list_option,
+                                                          'meeting': meeting,
+                                                          'quiz': quiz,
+                                                          'list_questions': list_questions})

@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'pdfs',
     'utils',
     'questionnaires',
-    'answers',
     'questions',
 ]
 

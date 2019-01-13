@@ -8,3 +8,10 @@ class QuestionForm(ModelForm):
 
         model = Question
         fields = ('question', )
+
+class QuestionCompleteForm(ModelForm):
+
+    class Meta:
+
+        model = Question
+        fields = ('answer', )
