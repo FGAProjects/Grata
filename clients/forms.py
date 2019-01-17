@@ -9,8 +9,19 @@ class ClientSignUp(UserCreationForm):
     email = forms.CharField(max_length=70)
 
     class Meta:
+
         model = User
         fields = ('username', 'ramal', 'sector','email', 'password1', 'password2', )
+
+    def clean_client(self):
+
+        email = self.cleaned_data['email']
+
+        if self.instance.id:
+
+            if User.objects.filter(username=email).exclude(id=self.instance.id):
+
+                raise forms.ValidationError('Usuário Já Cadastrado.')
 
 class EditClientForm(UserChangeForm):
 

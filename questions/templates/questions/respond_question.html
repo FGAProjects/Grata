@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+
+	<form method="post" class="form-horizontal" role="form">{% csrf_token %}
+
+		{{ formset.management_form }}
+
+			<table class="centered responsive-table highlight">
+				<h4 align="center">Avalie a Reunião</h4>
+
+					<thead>
+
+						<tr>
+
+							<th>N°</th>
+							<th>Perguntas</th>
+							<th>Respostas</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+					{% for form in formset %}
+						{% for question in list_questions %}
+
+							<tr>
+
+								<td>{{question.id}}</td>
+								<td>{{question.question}}</td>
+								<td>
+									{% for choice in form.answer.field.choices %}
+										<label>
+											<input type="hidden" id="{{question.id}}" name="question.id" value="{{question.id}}">
+											<input class="with-gap" type="radio" name="answer_{{question.id}}" value="{{choice}}"
+												   required>
+											<span id="answer">{{choice}}</span>
+										</label>
+									{% endfor %}
+								</td>
+							</tr>
+						{% endfor %}
+					{% endfor %}
+					</tbody>
+			</table>
+
+		<br>
+		<a href="{% url 'meeting_show' meeting.id %}" class="btn green darken-4 waves-effect waves-light right">
+			Voltar
+		</a>
+		<button class="btn cyan waves-effect waves-light right" type="submit">
+			Cadastrar
+			<i class="mdi-content-send right"></i>
+		</button>
+	</form>
+</div>
+
+{% endblock content %}

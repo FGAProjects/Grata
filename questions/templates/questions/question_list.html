@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+{% for question in list_questions %}
+
+	<h4>Pergunta: {{question.question}}</h4>
+	<h5>Resposta: {{question.answer}}</h5>
+{% endfor %}
+
+<a href="{% url 'meeting_show' meeting.id %}" class="btn green darken-4 waves-effect waves-light right">
+	Voltar
+</a>
+{% endblock content %}

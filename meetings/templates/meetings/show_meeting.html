@@ -242,8 +242,13 @@
 
 					<td>{{questionnaire.description}}</td>
 					<td>
-						<a href="{% url 'answer_show' meeting.id questionnaire.id %}">
+						<a href="{% url 'question_show' meeting.id questionnaire.id %}">
 							Ver Relatório
+						</a>
+					</td>
+					<td>
+						<a href="{% url 'question_list' meeting.id questionnaire.id %}">
+							Visualizar Respostas
 						</a>
 					</td>
 				</tr>
