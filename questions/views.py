@@ -7,7 +7,7 @@ from django.contrib import messages
 from meetings.models import Meeting
 from questionnaires.models import Quiz
 from questions.models import Question
-from questions.forms import QuestionForm,QuestionCompleteForm,QuestionFormSet,BaseQuestionSet
+from questions.forms import QuestionForm,QuestionCompleteForm
 
 @login_required
 def show_question(request,pk_meeting,pk_quiz):
@@ -77,21 +77,27 @@ def respond_question(request,pk_meeting,pk_quiz):
     meeting = get_object_or_404(Meeting, pk=pk_meeting)
     quiz = get_object_or_404(Quiz, pk=pk_quiz)
     list_questions = quiz.question_questionnaires.all()
-    BaseQuestionFormSet = formset_factory(QuestionCompleteForm, formset=BaseQuestionSet)
+    BaseQuestionFormSet = formset_factory(QuestionCompleteForm,extra=len(list_questions))
+    options = {
+        'SIM',
+        'NÃO'
+    }
+    cont = 1
 
-    if request.method == 'POST':
+    if request.method == 'POST' or request.method == 'post':
 
         question_form = BaseQuestionFormSet(request.POST)
 
         if question_form.is_valid():
 
-            for link_form in question_form:
+            for form in question_form:
 
-                question = request.POST.get('question.id')
-                answer = request.POST.get('answer_' + question)
-                print(answer)
-                answer = request.POST.get('answer_' + question)
-                print(answer)
+
+                # question_id = request.POST.get('question.id', False)
+                question_id = request.POST.get('question_' + str(cont))
+                answer = request.POST.get('answer_' + str(question_id))
+                print(question_id)
+                cont +=1
 
 
     else:
@@ -99,10 +105,10 @@ def respond_question(request,pk_meeting,pk_quiz):
         question_form = BaseQuestionFormSet()
 
     return render(request, 'questions/respond_question.html', {'formset': question_form,
-                                                               'questions': list_questions,
                                                                'meeting': meeting,
                                                                'quiz': quiz,
-                                                               'list_questions': list_questions})
+                                                               'list_questions': list_questions,
+                                                               'options' : options})
 
 def question_list(request, pk_meeting, pk_quiz):
 

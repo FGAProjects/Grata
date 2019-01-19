@@ -5,47 +5,47 @@
 
 <div class="container">
 
-	<form method="post" class="form-horizontal" role="form">{% csrf_token %}
+	<form method="POST" class="form-horizontal" role="form">{% csrf_token %}
 
-		{{ formset.management_form }}
+		<h4 align="center">Avalie a Reunião</h4>
+		<table class="centered responsive-table highlight">
 
-			<table class="centered responsive-table highlight">
-				<h4 align="center">Avalie a Reunião</h4>
+			<thead>
 
-					<thead>
+				<tr>
 
-						<tr>
+					<th>N°</th>
+					<th>Perguntas</th>
+					<th>Respostas</th>
+				</tr>
+			</thead>
 
-							<th>N°</th>
-							<th>Perguntas</th>
-							<th>Respostas</th>
-						</tr>
-					</thead>
+			<tbody>
 
-					<tbody>
 
-					{% for form in formset %}
-						{% for question in list_questions %}
+				{{ formset.management_form }}
+				{% for question in list_questions %}
 
-							<tr>
+					<tr>
+						<td>{{question.id}}</td>
+						<td>{{question.question}}</td>
+						<input type="hidden" name="question_{{forloop.counter}}" id="question_{{forloop.counter}}"
+							value="{{question.id}}">
+						<td>
 
-								<td>{{question.id}}</td>
-								<td>{{question.question}}</td>
-								<td>
-									{% for choice in form.answer.field.choices %}
-										<label>
-											<input type="hidden" id="{{question.id}}" name="question.id" value="{{question.id}}">
-											<input class="with-gap" type="radio" name="answer_{{question.id}}" value="{{choice}}"
-												   required>
-											<span id="answer">{{choice}}</span>
-										</label>
-									{% endfor %}
-								</td>
-							</tr>
-						{% endfor %}
-					{% endfor %}
-					</tbody>
-			</table>
+							{% for option in options %}
+								<label>
+
+									<input class="with-gap" name="answer_{{question.id}}" type="radio"
+										   required/>
+									<span id="answer">{{option}}</span>
+								</label>
+							{% endfor %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
 		<br>
 		<a href="{% url 'meeting_show' meeting.id %}" class="btn green darken-4 waves-effect waves-light right">
