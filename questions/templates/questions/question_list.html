@@ -3,13 +3,36 @@
 
 {% block content %}
 
-{% for question in list_questions %}
+<div class="container">
 
-	<h4>Pergunta: {{question.question}}</h4>
-	<h5>Resposta: {{question.answer}}</h5>
-{% endfor %}
+	<h4 align="center">Respostas do Questionário</h4>
+	<table class="centered responsive-table highlight">
+
+		<thead>
+
+			<tr>
+
+				<th>N°</th>
+				<th>Perguntas</th>
+				<th>Resposta</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for question in list_questions %}
+				<tr>
+
+					<td>{{question.id}}</td>
+					<td>{{question.question}}</td>
+					<td>{{question.answer}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 
 <a href="{% url 'meeting_show' meeting.id %}" class="btn green darken-4 waves-effect waves-light right">
 	Voltar
 </a>
+
 {% endblock content %}

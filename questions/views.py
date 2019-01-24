@@ -68,8 +68,8 @@ def delete_question(request,pk_question,pk_meeting,pk_quiz):
         return redirect('/ver_questionario/' + str(meeting.id) + '/' + str(quiz.id))
 
     return render(request, 'questions/delete_question.html', {'question': question,
-                                                            'meeting': meeting,
-                                                            'quiz': quiz})
+                                                              'meeting': meeting,
+                                                              'quiz': quiz})
 
 @login_required
 def respond_question(request,pk_meeting,pk_quiz):
@@ -83,6 +83,7 @@ def respond_question(request,pk_meeting,pk_quiz):
         'NÃO'
     }
     cont = 1
+    questions = []
 
     if request.method == 'POST' or request.method == 'post':
 
@@ -90,15 +91,32 @@ def respond_question(request,pk_meeting,pk_quiz):
 
         if question_form.is_valid():
 
-            for form in question_form:
+            for auxQuestion in list_questions:
 
+                questions.append(auxQuestion)
 
-                # question_id = request.POST.get('question.id', False)
+            for aux in range(len(list_questions)):
+
+                question = Question()
+
                 question_id = request.POST.get('question_' + str(cont))
                 answer = request.POST.get('answer_' + str(question_id))
-                print(question_id)
+                question_remove = Question.objects.get(id=questions[aux].id)
                 cont +=1
 
+                question.question = questions[aux].question
+                question.answer = answer
+
+                if answer != None:
+
+                    quiz.question_questionnaires.remove(question_remove)
+                    question_remove.delete()
+
+                    question.save()
+                    quiz.question_questionnaires.add(question)
+
+            messages.success(request, 'Questionário Respondido Com Sucesso!')
+            return redirect('meeting_show', pk=meeting.id)
 
     else:
 

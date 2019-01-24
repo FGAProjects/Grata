@@ -22,7 +22,6 @@
 
 			<tbody>
 
-
 				{{ formset.management_form }}
 				{% for question in list_questions %}
 
@@ -37,7 +36,7 @@
 								<label>
 
 									<input class="with-gap" name="answer_{{question.id}}" type="radio"
-										   required/>
+										   required value="{{option}}"/>
 									<span id="answer">{{option}}</span>
 								</label>
 							{% endfor %}

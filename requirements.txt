@@ -10,3 +10,4 @@ python-decouple
 dj-static
 django-heroku
 reportlab
+xhtml2pdf
