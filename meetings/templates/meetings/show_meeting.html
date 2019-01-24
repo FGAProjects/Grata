@@ -8,14 +8,10 @@
 
 <div class="container">
 
+	<h4 align="center">Informações da Reunião</h4>
 	<table class="centered responsive-table">
-
-		<h4 align="center">Informações da Reunião</h4>
-
 		<thead>
-
 			<tr>
-
 				<th>Número</th>
 				<th>Assunto</th>
 				<th>Projeto</th>
@@ -32,9 +28,7 @@
 		</thead>
 
 		<tbody>
-
 			<tr>
-
 				<td>{{meeting.id}}</td>
 				<td>{{meeting.subject_matter}}</td>
 				<td>{{meeting.project}}</td>
@@ -45,7 +39,19 @@
 				<td>{{meeting.final_date}}</td>
 				<td>{{meeting.first_hour}}</td>
 				<td>{{meeting.final_hour}}</td>
-				<td>{{meeting.status}}</td>
+				{% if meeting.status == 'Pendente' %}
+					<td>
+						<font color="#F80303">
+							<b>{{meeting.status}}</b>
+						</font>
+					</td>
+				{% else %}
+					<td>
+						<font color="#01FA26">
+							<b>{{meeting.status}}</b>
+						</font>
+					</td>
+				{% endif %}
 			</tr>
 
 		</tbody>
@@ -86,7 +92,6 @@
 			</thead>
 
 			<tbody>
-
 				<tr>
 					<td></td>
 					<td>{{meeting.id}}</td>
@@ -99,9 +104,8 @@
 
 	<div class="container">
 
+		<h4 align="center">Tópicos da Reunião</h4>
 		<table class="centered responsive-table highlight">
-
-			<h4 align="center">Tópicos da Reunião</h4>
 
 			<thead>
 				<tr>
@@ -119,11 +123,8 @@
 			</thead>
 
 			<tbody>
-
 				{% for topic in list_topics %}
-
 				<tr>
-
 					<td></td>
 					<td>{{topic.topic_name}}</td>
 					<td><a href="{% url 'topic_delete' topic.id meeting.id %}"
@@ -136,10 +137,8 @@
 
 	<div class="container">
 
+		<h4 align="center">Pauta de Reunião</h4>
 		<table class="centered responsive-table highlight">
-
-			<h4 align="center">Pauta de Reunião</h4>
-
 			<thead>
 				<tr>
 					<th>
@@ -156,11 +155,8 @@
 			</thead>
 
 			<tbody>
-
 				{% for shedule in shedules %}
-
 				<tr>
-
 					<td></td>
 					<td>{{shedule.id}}</td>
 					<td>
@@ -176,9 +172,8 @@
 
 	<div class="container">
 
+		<h4 align="center">Questionário de Avaliação</h4>
 		<table class="centered responsive-table highlight">
-
-			<h4 align="center">Questionário de Avaliação</h4>
 
 			<thead>
 				<tr>
@@ -198,7 +193,6 @@
 			<tbody>
 
 				{% for questionnaire in questionnaires %}
-
 					<tr>
 
 						<td></td>
@@ -218,12 +212,9 @@
 
 <div class="container">
 
+	<h4 align="center">Questionário de Avaliação</h4>
 	<table class="centered responsive-table highlight">
-
-		<h4 align="center">Questionário de Avaliação</h4>
-
 		<thead>
-
 			<tr>
 				<th>N</th>
 				<th>Descrição</th>
@@ -233,11 +224,7 @@
 		</thead>
 
 		<tbody>
-
-		<tbody>
-
 			{% for questionnaire in questionnaires %}
-
 				<tr>
 					<td>{{questionnaire.id}}</td>
 					<td>{{questionnaire.description}}</td>

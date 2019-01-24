@@ -8,7 +8,7 @@ class Meeting(models.Model):
     subject_matter = models.CharField(max_length=40)
     project = models.CharField(max_length=40)
     local = models.CharField(max_length=40)
-    status = models.CharField(max_length=9,null=True)
+    status = models.CharField(max_length=10,null=True)
     meeting_leader = models.CharField(max_length=40)
     documentary = models.CharField(max_length=40)
     first_date = models.CharField(max_length=12)

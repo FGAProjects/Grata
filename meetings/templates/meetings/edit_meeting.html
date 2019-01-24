@@ -111,6 +111,19 @@
                         </div>
 
                         <div class="row">
+                            <div class="input-field col s11">
+                                <i class="mdi-communication-group prefix"></i>
+                                <i class="small material-icons">group</i>
+                                <select name="status" required id="id_status">
+                                    {% for status_reuniao in status %}
+                                        <option value="{{status_reuniao}}">{{status_reuniao}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label>Status da Reunião</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
 	                        <div class="input-field col s5">
 		                        <button class="btn blue darken-4 waves-effect waves-light right" type="submit">Alterar
 			                       <i class="mdi-content-send right"></i>

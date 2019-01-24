@@ -16,4 +16,4 @@ class EditMeetingForm(ModelForm):
 
         model = Meeting
         fields = ['subject_matter', 'project', 'meeting_leader', 'local', 'documentary', 'first_date',
-                  'final_date', 'first_hour', 'final_hour']
+                  'final_date', 'first_hour', 'final_hour', 'status']
