@@ -2,6 +2,7 @@ import json
 
 from shedules.models import Shedule
 from topics.models import Topic
+from questions.models import Question
 
 def list_shedules():
 
@@ -52,3 +53,24 @@ def list_topics():
                                      topic.topic_name))
 
     return topics_list
+
+def list_questions():
+
+    questions = open('jsons/question.json', 'r')
+    read_questions = json.load(questions)
+    questions.close()
+    list_questions = read_questions
+    question = Question()
+    questions_list = []
+
+    for aux in range(len(list_questions)):
+
+        question.question = \
+            list_questions[aux].get('Questions').get('question')
+        question.answer = list_questions[aux].get('Questions').get('answer')
+
+        questions_list.append(Question('',
+                                            question.question,
+                                            question.answer))
+
+    return questions_list

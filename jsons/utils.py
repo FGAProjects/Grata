@@ -2,6 +2,8 @@ import json
 from django.shortcuts import get_object_or_404
 
 from meetings.models import Meeting
+from questions.models import Question
+from questionnaires.models import Quiz
 
 def shedules_json(pk):
 
@@ -44,5 +46,25 @@ def topics_json(pk):
             }
 
             topic_data.append(topic_list)
-
             json.dump(topic_data, write_file)
+
+def questions_json(pk_quiz):
+
+    quiz = get_object_or_404(Quiz, pk=pk_quiz)
+    list_questions = Question.objects.filter(quiz__id=quiz.id)
+
+    question_data = []
+
+    for question in list_questions:
+
+        with open('jsons/question.json', 'w') as write_file:
+
+            question_list = {
+                'Questions' : {
+                    'question': question.question,
+                    'answer': question.answer
+                }
+            }
+
+            question_data.append(question_list)
+            json.dump(question_data, write_file)

@@ -58,17 +58,16 @@
 
 		<a href="{% url 'meeting_list' %}"
 		   class="btn green darken-4 waves-effect waves-light right">Voltar</a>
-		<a href="{% url 'meeting_delete' meeting.id%}"
+		<a href="{% url 'meeting_delete' meeting.id %}"
 		   class="btn red accent-4 waves-effect waves-light right">Cancelar Reunião</a>
-		<a href="{% url 'meeting_edit' meeting.id%}"
+		<a href="{% url 'meeting_edit' meeting.id %}"
 		   class="btn blue darken-4 waves-effect waves-light right">Editar Reunião</a>
 	</div>
 
 	<div class="container">
 
+		<h4 align="center">Participantes da Reunião</h4>
 		<table class="centered responsive-table highlight">
-
-			<h4 align="center">Participantes da Reunião</h4>
 
 			<thead>
 				<tr>
@@ -226,7 +225,7 @@
 		<thead>
 
 			<tr>
-
+				<th>N</th>
 				<th>Descrição</th>
 				<th>Visualizar Relatório</th>
 				<th>Visualizar Respostas</th>
@@ -240,7 +239,7 @@
 			{% for questionnaire in questionnaires %}
 
 				<tr>
-
+					<td>{{questionnaire.id}}</td>
 					<td>{{questionnaire.description}}</td>
 					<td>
 						<a href="{% url 'question_show' meeting.id questionnaire.id %}">

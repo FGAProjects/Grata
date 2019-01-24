@@ -29,10 +29,15 @@
 			{% endfor %}
 		</tbody>
 	</table>
-</div>
 
-<a href="{% url 'meeting_show' meeting.id %}" class="btn green darken-4 waves-effect waves-light right">
-	Voltar
-</a>
+	<br>
+	<a href="{% url 'meeting_show' meeting.id %}" class="btn green darken-4 waves-effect waves-light right">
+		Voltar
+	</a>
+
+	<a href="{% url 'question_show' meeting.id quiz.id %}"
+		   class="btn blue darken-4 waves-effect waves-light right">Editar Respostas
+	</a>
+</div>
 
 {% endblock content %}

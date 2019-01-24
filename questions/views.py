@@ -1,3 +1,5 @@
+from jsons.utils import questions_json
+
 from django.shortcuts import render,redirect,get_object_or_404
 from django.forms import formset_factory
 
@@ -79,8 +81,8 @@ def respond_question(request,pk_meeting,pk_quiz):
     list_questions = quiz.question_questionnaires.all()
     BaseQuestionFormSet = formset_factory(QuestionCompleteForm,extra=len(list_questions))
     options = {
-        'SIM',
-        'NÃO'
+        'NÃO',
+        'SIM'
     }
     cont = 1
     questions = []
@@ -114,6 +116,7 @@ def respond_question(request,pk_meeting,pk_quiz):
 
                     question.save()
                     quiz.question_questionnaires.add(question)
+                    questions_json(pk_quiz)
 
             messages.success(request, 'Questionário Respondido Com Sucesso!')
             return redirect('meeting_show', pk=meeting.id)
@@ -132,7 +135,7 @@ def question_list(request, pk_meeting, pk_quiz):
 
     meeting = get_object_or_404(Meeting, pk=pk_meeting)
     quiz = get_object_or_404(Quiz, pk=pk_quiz)
-    list_questions = quiz.question_questionnaires.all()
+    list_questions = Question.objects.filter(quiz__id=quiz.id)
 
     return render(request, 'questions/question_list.html', {'meeting': meeting,
                                                             'quiz': quiz,

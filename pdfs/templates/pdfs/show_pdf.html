@@ -19,5 +19,14 @@
 	<h4>Nome Tópico: {{topic.topic_name}}</h4>
 {% endfor %}
 
-	</div>
+{% for question in questions %}
+
+	<h4>Pergunta: {{question.question}}</h4>
+	<h4>Resposta: {{question.answer}}</h4>
+{% endfor %}
+
+</div>
 {% endblock content %}
+
+
+
