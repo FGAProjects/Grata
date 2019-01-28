@@ -8,6 +8,7 @@ psycopg2
 pytz
 python-decouple
 dj-static
+django-heroku
 reportlab
 xhtml2pdf
 whitenoise
