@@ -33,7 +33,7 @@ var/
 */migrations/000*_*_*_*.py
 */migrations/*_auto_*.py
 */migrations/000*_*_*.py
-.Procfile
+Procfile
 */wsgi.py
 wheels/
 *.egg-info/
