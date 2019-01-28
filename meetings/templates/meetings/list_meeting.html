@@ -22,7 +22,7 @@
 
  	<thead>
 
-	<tr>
+		<tr>
 			{% if request.user.is_staff %}
 
 				<th>
@@ -52,11 +52,22 @@
 
 					<td></td>
 				{% endif %}
-
 				<td>{{ meeting.id }}</td>
 				<td><a href="{% url 'meeting_show' meeting.id %}">{{meeting.subject_matter}}</a></td>
 				<td>{{ meeting.project }}</td>
-				<td>{{ meeting.status}}</td>
+				{% if meeting.status == 'Pendente' %}
+					<td>
+						<font color="#F80303">
+							<b>{{meeting.status}}</b>
+						</font>
+					</td>
+				{% else %}
+					<td>
+						<font color="#01FA26">
+							<b>{{meeting.status}}</b>
+						</font>
+					</td>
+				{% endif %}
 			</tr>
     	{% endfor %}
 	</tbody>
